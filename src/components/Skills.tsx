@@ -3,47 +3,47 @@ import { Database, Brain, Code2, Palette } from 'lucide-react';
 export function Skills() {
   const skillCategories = [
     {
-      title: 'Data Science & AI',
-      icon: Brain,
-      color: 'blue',
-      skills: [
-        { name: 'Python', level: 90 },
-        { name: 'Machine Learning', level: 85 },
-        { name: 'Data Analysis', level: 80 },
-        { name: 'Artificial Intelligence', level: 75 },
-      ],
-    },
-    {
-      title: 'Web Development',
+      title: 'Frontend Development',
       icon: Code2,
       color: 'indigo',
       skills: [
-        { name: 'HTML & CSS', level: 90 },
-        { name: 'JavaScript', level: 85 },
+        { name: 'HTML', level: 80 },
+        { name: 'CSS', level: 80 },
+        { name: 'JavaScript', level: 80 },
+        { name: 'React', level: 75 },
+      ],
+    },
+    {
+      title: 'Backend Development',
+      icon: Database,
+      color: 'blue',
+      skills: [
+        { name: 'Python', level: 80 },
+        { name: 'Node.js', level: 75 },
+        { name: 'MySQL', level: 80 },
         { name: 'SQL', level: 80 },
-        { name: 'Database Design', level: 75 },
       ],
     },
     {
       title: 'Technical Skills',
-      icon: Database,
+      icon: Brain,
       color: 'purple',
       skills: [
-        { name: 'Computer Hardware', level: 85 },
-        { name: 'System Architecture', level: 80 },
         { name: 'Problem Solving', level: 90 },
         { name: 'Data Structures', level: 85 },
+        { name: 'System Architecture', level: 80 },
+        { name: 'Version Control', level: 85 },
       ],
     },
     {
-      title: 'Design',
+      title: 'Tools & Frameworks',
       icon: Palette,
       color: 'pink',
       skills: [
-        { name: 'Graphic Design', level: 80 },
-        { name: 'Visual Communication', level: 75 },
-        { name: 'UI/UX Principles', level: 70 },
-        { name: 'Creative Software', level: 75 },
+        { name: 'Flask', level: 75 },
+        { name: 'Electron', level: 70 },
+        { name: 'Git', level: 85 },
+        { name: 'VS Code', level: 90 },
       ],
     },
   ];

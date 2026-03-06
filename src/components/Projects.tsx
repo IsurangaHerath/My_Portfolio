@@ -3,40 +3,22 @@ import { ExternalLink, Github } from 'lucide-react';
 export function Projects() {
   const projects = [
     {
-      title: 'Machine Learning Prediction Model',
-      description: 'Developed a predictive model using Python and scikit-learn to analyze datasets and generate accurate forecasts.',
-      technologies: ['Python', 'Machine Learning', 'Data Analysis', 'Pandas'],
-      category: 'Data Science',
+      title: 'POS System',
+      description: 'A point of sale system for managing inventory, sales, and transactions',
+      technologies: ['Node.js', 'Express', 'MySQL', 'React', 'Vite', 'Electron'],
+      category: 'Desktop Application',
     },
     {
-      title: 'Data Visualization Dashboard',
-      description: 'Created an interactive dashboard to visualize complex datasets with charts and graphs for better insights.',
-      technologies: ['Python', 'Data Visualization', 'Analytics'],
-      category: 'Data Science',
+      title: 'Task Scheduler',
+      description: 'Application to manage and schedule daily tasks and reminders',
+      technologies: ['React 18', 'Node.js', 'Express', 'JavaScript', 'SQLite'],
+      category: 'Web Application',
     },
     {
-      title: 'Web Application Project',
-      description: 'Built a full-stack web application using HTML, CSS, JavaScript with SQL database integration.',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'SQL'],
-      category: 'Web Development',
-    },
-    {
-      title: 'AI Chatbot Assistant',
-      description: 'Designed an AI-powered chatbot using natural language processing techniques to handle user queries.',
-      technologies: ['Python', 'AI', 'NLP', 'Machine Learning'],
-      category: 'Artificial Intelligence',
-    },
-    {
-      title: 'Database Management System',
-      description: 'Designed and implemented a relational database system with optimized queries and data integrity.',
-      technologies: ['SQL', 'Database Design', 'Data Modeling'],
-      category: 'Database',
-    },
-    {
-      title: 'Graphic Design Portfolio',
-      description: 'Created various visual designs including logos, branding materials, and digital illustrations.',
-      technologies: ['Graphic Design', 'Visual Communication', 'Branding'],
-      category: 'Design',
+      title: 'Online Voting System',
+      description: 'Digital platform for conducting secure online elections and voting',
+      technologies: ['Python', 'Flask', 'MySQL', 'HTML5', 'CSS3', 'JavaScript'],
+      category: 'Web Application',
     },
   ];
 
