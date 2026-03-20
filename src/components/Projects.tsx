@@ -7,18 +7,21 @@ export function Projects() {
       description: 'A point of sale system for managing inventory, sales, and transactions',
       technologies: ['Node.js', 'Express', 'MySQL', 'React', 'Vite', 'Electron'],
       category: 'Desktop Application',
+      github: 'https://github.com/IsurangaHerath/POS_System',
     },
     {
       title: 'Task Scheduler',
       description: 'Application to manage and schedule daily tasks and reminders',
       technologies: ['React 18', 'Node.js', 'Express', 'JavaScript', 'SQLite'],
       category: 'Web Application',
+      github: 'https://github.com/IsurangaHerath/Task_Scheduler',
     },
     {
       title: 'Online Voting System',
       description: 'Digital platform for conducting secure online elections and voting',
       technologies: ['Python', 'Flask', 'MySQL', 'HTML5', 'CSS3', 'JavaScript'],
       category: 'Web Application',
+      github: 'https://github.com/IsurangaHerath/Online_Voting_System',
     },
   ];
 
@@ -72,7 +75,9 @@ export function Projects() {
 
                 <div className="flex gap-4 pt-4 border-t border-gray-200">
                   <a
-                    href="#"
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
                   >
                     <Github size={18} />
@@ -80,7 +85,7 @@ export function Projects() {
                   </a>
                   <a
                     href="#"
-                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+                    className="flex items-center gap-2 text-gray-400 cursor-not-allowed"
                   >
                     <ExternalLink size={18} />
                     <span className="text-sm">Live Demo</span>

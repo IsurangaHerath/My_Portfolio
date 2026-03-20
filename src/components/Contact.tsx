@@ -10,9 +10,20 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
+    
+    // Create mailto link with form data
+    const recipientEmail = 'navodyaisuranga10@gmail.com';
+    const subject = encodeURIComponent('Contact from Portfolio');
+    const body = encodeURIComponent(
+      'Hi, I would like to connect with you...\n\n' +
+      'Name: ' + formData.name + '\n' +
+      'Email: ' + formData.email + '\n\n' +
+      'Message:\n' + formData.message
+    );
+    
+    // Open email client
+    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -46,7 +57,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Email</p>
-                  <p className="text-gray-700">your.email@example.com</p>
+                  <a href="mailto:navodyaisuranga10@gmail.com" className="text-gray-700 hover:text-blue-600">navodyaisuranga10@gmail.com</a>
                 </div>
               </div>
 
@@ -75,13 +86,17 @@ export function Contact() {
               <p className="font-semibold mb-4 text-gray-900">Connect with me:</p>
               <div className="flex gap-4">
                 <a
-                  href="#"
+                  href="https://github.com/IsurangaHerath"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 bg-gray-100 rounded-lg text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
                 >
                   <Github size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/isuranga-herath-1765b72b9"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 bg-gray-100 rounded-lg text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
                 >
                   <Linkedin size={24} />
@@ -90,8 +105,8 @@ export function Contact() {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+          <div className="w-full max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
               Send a Message
             </h3>
             

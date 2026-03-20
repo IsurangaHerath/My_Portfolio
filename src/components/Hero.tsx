@@ -5,7 +5,7 @@ export function Hero() {
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div className="mb-8">
-          <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-4 border-blue-600">
+          <div className="w-40 h-40 mx-auto rounded-full overflow-hidden mb-6 border-2 border-blue-600">
             <img 
               src="/profile.jpg" 
               alt="Profile Photo" 
@@ -40,13 +40,13 @@ export function Hero() {
         </div>
 
         <div className="flex justify-center gap-6">
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">
+          <a href="https://github.com/IsurangaHerath" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 transition-colors">
             <Github size={24} />
           </a>
-          <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">
+          <a href="https://www.linkedin.com/in/isuranga-herath-1765b72b9" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 transition-colors">
             <Linkedin size={24} />
           </a>
-          <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">
+          <a href="mailto:navodyaisuranga10@gmail.com" className="text-gray-700 hover:text-blue-600 transition-colors">
             <Mail size={24} />
           </a>
         </div>

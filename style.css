@@ -2,32 +2,42 @@
    Portfolio Website - Clean & Responsive CSS
    ======================================== */
 
-/* CSS Variables */
+/* CSS Variables - Muted Color Pattern */
 :root {
-    --color-blue-50: #eff6ff;
-    --color-blue-100: #dbeafe;
-    --color-blue-600: #2563eb;
-    --color-blue-700: #1d4ed8;
-    --color-indigo-50: #eef2ff;
-    --color-indigo-100: #e0e7ff;
-    --color-indigo-600: #4f46e5;
-    --color-purple-50: #faf5ff;
-    --color-purple-100: #f3e8ff;
-    --color-purple-600: #9333ea;
-    --color-pink-50: #fdf2f8;
-    --color-pink-100: #fce7f3;
-    --color-pink-600: #db2777;
-    --color-green-50: #f0fdf4;
-    --color-green-100: #dcfce7;
-    --color-green-600: #16a34a;
-    --color-gray-50: #f9fafb;
-    --color-gray-100: #f3f4f6;
-    --color-gray-200: #e5e7eb;
-    --color-gray-300: #d1d5db;
-    --color-gray-400: #9ca3af;
-    --color-gray-500: #6b7280;
-    --color-gray-600: #4b5563;
-    --color-gray-700: #374151;
+    /* Muted Color Palette */
+    --color-cream: #F7F1F0;
+    --color-muted-rose: #C3A6A0;
+    --color-terracotta: #A15C38;
+    --color-dark-brown: #262220;
+    
+    /* White/light backgrounds - muted cream */
+    --color-white: #FAF8F7;
+    
+    /* Derived muted colors */
+    --color-blue-50: #F7F1F0;
+    --color-blue-100: #EDE8E5;
+    --color-blue-600: #C3A6A0;
+    --color-blue-700: #A15C38;
+    --color-indigo-50: #F0EBE9;
+    --color-indigo-100: #E5DDD9;
+    --color-indigo-600: #A15C38;
+    --color-purple-50: #F5F0EE;
+    --color-purple-100: #EBE4E0;
+    --color-purple-600: #8B4D30;
+    --color-pink-50: #FAF5F4;
+    --color-pink-100: #F5EBE8;
+    --color-pink-600: #7A4A3A;
+    --color-green-50: #F5F3F2;
+    --color-green-100: #EBE7E4;
+    --color-green-600: #6B4433;
+    --color-gray-50: #F7F1F0;
+    --color-gray-100: #EDE8E5;
+    --color-gray-200: #D9D0CC;
+    --color-gray-300: #B8AFA9;
+    --color-gray-400: #9C918C;
+    --color-gray-500: #7A716D;
+    --color-gray-600: #5C5552;
+    --color-gray-700: #262220;
     --color-gray-800: #1f2937;
     --color-gray-900: #111827;
     --color-white: #ffffff;
@@ -219,12 +229,42 @@ ul {
 }
 
 .profile-photo {
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
     margin: 0 auto 2rem;
     border-radius: var(--radius-full);
     overflow: hidden;
-    border: 4px solid var(--color-blue-600);
+    border: 2px solid var(--color-blue-600);
+    /* Interactive zoom feature */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Zoomed state - image scales up */
+.profile-photo.zoomed {
+    transform: scale(2);
+    z-index: 1000;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark overlay background when zoomed */
+body.photo-zoomed::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animation for overlay */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .profile-photo img {
@@ -717,11 +757,11 @@ section {
 }
 
 .project-image.desktop-app {
-    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    background: linear-gradient(135deg, #C3A6A0 0%, #A15C38 100%);
 }
 
 .project-image.web-app {
-    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #A15C38 0%, #7A4A3A 100%);
 }
 
 .project-image span {
@@ -884,6 +924,10 @@ section {
 }
 
 /* Contact Form */
+.contact-form {
+    /* Full page width - default */
+}
+
 .contact-form h3 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
@@ -915,7 +959,7 @@ section {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-blue-600);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px rgba(161, 92, 56, 0.2);
 }
 
 .form-group textarea {
