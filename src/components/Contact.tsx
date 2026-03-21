@@ -162,7 +162,7 @@ export function Contact() {
       </div>
 
       <div className="mt-16 pt-8 border-t border-gray-200 text-center text-gray-600">
-        <p>© 2026 Computer Science Portfolio. All rights reserved.</p>
+        <p>© 2026 Isuranga Herath. All rights reserved.</p>
       </div>
     </section>
   );

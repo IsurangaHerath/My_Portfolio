@@ -15,7 +15,7 @@ export function Hero() {
         </div>
         
         <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-4 text-gray-900">
-          Computer Science Student
+          Isuranga Herath
         </h1>
         <p className="text-xl sm:text-2xl text-gray-700 mb-6">
           Data Science • Machine Learning • Artificial Intelligence • Python • Database • SQL
