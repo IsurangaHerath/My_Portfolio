@@ -11,27 +11,18 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Create mailto link with form data
     const recipientEmail = 'navodyaisuranga10@gmail.com';
     const subject = encodeURIComponent('Contact from Portfolio');
     const body = encodeURIComponent(
-      'Hi, I would like to connect with you...\n\n' +
-      'Name: ' + formData.name + '\n' +
-      'Email: ' + formData.email + '\n\n' +
-      'Message:\n' + formData.message
+      `Hi, I would like to connect with you...\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
     
-    // Open email client
     window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-    
     setFormData({ name: '', email: '', message: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (

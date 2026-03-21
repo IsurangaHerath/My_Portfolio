@@ -1,11 +1,52 @@
 
-  # Portfolio Website
+# Portfolio Website
 
-  This is a code bundle for Portfolio Website. The original project is available at https://www.figma.com/design/K0PXwBaBlwOD7TKvFhsPb0/Portfolio-Website.
+A modern, responsive portfolio website built with React and Vite.
 
-  ## Running the code
+## 🔗 Live Website
 
-  Run `npm i` to install the dependencies.
+**Visit my portfolio:** [https://isurangaherath.github.io/My_Portfolio/](https://isurangaherath.github.io/My_Portfolio/)
 
-  Run `npm run dev` to start the development server.
-  
+---
+
+## 🚀 Getting Started
+
+### Install Dependencies
+```bash
+npm install
+```
+
+### Start Development Server
+```bash
+npm run dev
+```
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Deploy to GitHub Pages
+```bash
+npm run deploy
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** - Frontend library
+- **Vite** - Build tool
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Radix UI** - Accessible components
+
+---
+
+## 📄 License
+
+This project is for personal use.
+
+---
+
+Built with ❤️ by Isuranga Herath

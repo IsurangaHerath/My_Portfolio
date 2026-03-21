@@ -48,14 +48,11 @@ export function Skills() {
     },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      blue: { bg: 'bg-blue-100', text: 'text-blue-600', bar: 'bg-blue-600' },
-      indigo: { bg: 'bg-indigo-100', text: 'text-indigo-600', bar: 'bg-indigo-600' },
-      purple: { bg: 'bg-purple-100', text: 'text-purple-600', bar: 'bg-purple-600' },
-      pink: { bg: 'bg-pink-100', text: 'text-pink-600', bar: 'bg-pink-600' },
-    };
-    return colors[color as keyof typeof colors];
+  const colors: Record<string, { bg: string; text: string; bar: string }> = {
+    blue: { bg: 'bg-blue-100', text: 'text-blue-600', bar: 'bg-blue-600' },
+    indigo: { bg: 'bg-indigo-100', text: 'text-indigo-600', bar: 'bg-indigo-600' },
+    purple: { bg: 'bg-purple-100', text: 'text-purple-600', bar: 'bg-purple-600' },
+    pink: { bg: 'bg-pink-100', text: 'text-pink-600', bar: 'bg-pink-600' },
   };
 
   return (
@@ -66,26 +63,24 @@ export function Skills() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category) => {
-            const colors = getColorClasses(category.color);
-            const Icon = category.icon;
+          {skillCategories.map((cat) => {
+            const c = colors[cat.color];
+            const Icon = cat.icon;
             
             return (
               <div
-                key={category.title}
+                key={cat.title}
                 className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`p-2 ${colors.bg} rounded-lg`}>
-                    <Icon className={colors.text} size={24} />
+                  <div className={`p-2 ${c.bg} rounded-lg`}>
+                    <Icon className={c.text} size={24} />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {category.title}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-900">{cat.title}</h3>
                 </div>
 
                 <div className="space-y-4">
-                  {category.skills.map((skill) => (
+                  {cat.skills.map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-2">
                         <span className="text-gray-700">{skill.name}</span>
@@ -93,7 +88,7 @@ export function Skills() {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
-                          className={`${colors.bar} h-2 rounded-full transition-all duration-500`}
+                          className={`${c.bar} h-2 rounded-full transition-all duration-500`}
                           style={{ width: `${skill.level}%` }}
                         />
                       </div>

@@ -36,18 +36,16 @@ export function Projects() {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {projects.map((project, i) => (
             <div
-              key={index}
+              key={i}
               className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group"
             >
               <div className="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
                 <div className="text-white text-6xl opacity-20">
                   {project.category === 'Data Science' && '📊'}
-                  {project.category === 'Web Development' && '💻'}
-                  {project.category === 'Artificial Intelligence' && '🤖'}
-                  {project.category === 'Database' && '🗄️'}
-                  {project.category === 'Design' && '🎨'}
+                  {project.category === 'Web Application' && '💻'}
+                  {project.category === 'Desktop Application' && '🖥️'}
                 </div>
               </div>
               

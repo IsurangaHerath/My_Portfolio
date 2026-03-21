@@ -1,7 +1,7 @@
 import { Award, CheckCircle } from 'lucide-react';
 
 export function Certifications() {
-  const certifications = [
+  const certs = [
     {
       title: 'Python Programming',
       provider: 'Online Certification',
@@ -42,9 +42,9 @@ export function Certifications() {
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
+          {certs.map((cert, i) => (
             <div
-              key={index}
+              key={i}
               className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-start gap-3 mb-4">

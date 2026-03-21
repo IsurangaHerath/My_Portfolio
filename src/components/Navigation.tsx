@@ -20,7 +20,6 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="font-semibold text-xl text-gray-900">Portfolio</div>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <a
@@ -33,7 +32,6 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600"
@@ -42,7 +40,6 @@ export function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-4">
             {navLinks.map((link) => (
