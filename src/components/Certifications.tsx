@@ -1,4 +1,4 @@
-import { Award, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 export function Certifications() {
   const certs = [
@@ -7,30 +7,35 @@ export function Certifications() {
       provider: 'Online Certification',
       description: 'Advanced Python programming concepts and best practices',
       category: 'Programming',
+      image: '/images/certifications/python-cert.jpg',
     },
     {
       title: 'Artificial Intelligence',
       provider: 'Online Certification',
       description: 'Fundamentals of AI, neural networks, and deep learning',
       category: 'AI/ML',
+      image: '/images/certifications/ai-cert.jpg',
     },
     {
       title: 'HTML & CSS',
       provider: 'Online Certification',
       description: 'Modern web development with HTML5 and CSS3',
       category: 'Web Development',
+      image: '/images/certifications/html-css-cert.jpg',
     },
     {
       title: 'JavaScript',
       provider: 'Online Certification',
       description: 'JavaScript fundamentals and modern ES6+ features',
       category: 'Web Development',
+      image: '/images/certifications/javascript-cert.jpg',
     },
     {
       title: 'SQL Database Management',
       provider: 'Online Certification',
       description: 'Database design, queries, and optimization techniques',
       category: 'Database',
+      image: '/images/certifications/sql-cert.jpg',
     },
   ];
 
@@ -48,8 +53,12 @@ export function Certifications() {
               className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-start gap-3 mb-4">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <Award className="text-green-600" size={24} />
+                <div className="cert-image-container flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 rounded-lg overflow-hidden">
+                  <img
+                      src={cert.image}
+                      alt={`${cert.title} Certificate`}
+                      className="cert-img w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex-1">
                   <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full mb-2">

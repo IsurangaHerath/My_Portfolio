@@ -8,6 +8,7 @@ export function Projects() {
       technologies: ['Node.js', 'Express', 'MySQL', 'React', 'Vite', 'Electron'],
       category: 'Desktop Application',
       github: 'https://github.com/IsurangaHerath/POS_System',
+      image: '/images/projects/pos-system.jpg',
     },
     {
       title: 'Task Scheduler',
@@ -15,6 +16,7 @@ export function Projects() {
       technologies: ['React 18', 'Node.js', 'Express', 'JavaScript', 'SQLite'],
       category: 'Web Application',
       github: 'https://github.com/IsurangaHerath/Task_Scheduler',
+      image: '/images/projects/task-scheduler.jpg',
     },
     {
       title: 'Online Voting System',
@@ -22,6 +24,7 @@ export function Projects() {
       technologies: ['Python', 'Flask', 'MySQL', 'HTML5', 'CSS3', 'JavaScript'],
       category: 'Web Application',
       github: 'https://github.com/IsurangaHerath/Online_Voting_System',
+      image: '/images/projects/voting-system.jpg',
     },
   ];
 
@@ -41,12 +44,12 @@ export function Projects() {
               key={i}
               className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group"
             >
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                <div className="text-white text-6xl opacity-20">
-                  {project.category === 'Data Science' && '📊'}
-                  {project.category === 'Web Application' && '💻'}
-                  {project.category === 'Desktop Application' && '🖥️'}
-                </div>
+              <div className="project-image-container">
+                <img
+                    src={project.image}
+                    alt={`${project.title} Preview`}
+                    className="project-img w-full h-48 object-cover"
+                />
               </div>
               
               <div className="p-6">
