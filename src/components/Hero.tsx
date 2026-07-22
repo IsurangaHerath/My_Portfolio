@@ -1,56 +1,330 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, Download, ArrowDown } from 'lucide-react';
+import { useTypingAnimation } from '../hooks/useTypingAnimation';
+import { PERSONAL_INFO, TYPING_ROLES } from '../constants/data';
 
 export function Hero() {
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <div className="mb-8">
-          <div className="w-40 h-40 mx-auto rounded-full overflow-hidden mb-6 border-2 border-blue-600">
-            <img 
-              src="/profile.jpg" 
-              alt="Profile Photo" 
-              className="w-full h-full object-cover"
-            />
-        </div>
-        </div>
-        
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-4 text-gray-900">
-          Isuranga Herath
-        </h1>
-        <p className="text-xl sm:text-2xl text-gray-700 mb-6">
-          Data Science • Machine Learning • Artificial Intelligence • Python • Database • SQL
-        </p>
-        <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Undergraduate at University of Vavuniya, specializing in Computer Science with a focus on Data Science and AI
-        </p>
-        
-        <div className="flex justify-center gap-4 mb-8">
-          <a
-            href="#contact"
-            className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Get in Touch
-          </a>
-          <a
-            href="#projects"
-            className="px-8 py-3 bg-white text-blue-600 rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-colors"
-          >
-            View Projects
-          </a>
-        </div>
+  const typedText = useTypingAnimation(TYPING_ROLES, {
+    typeSpeed: 75,
+    deleteSpeed: 40,
+    pauseDuration: 2200,
+  });
 
-        <div className="flex justify-center gap-6">
-          <a href="https://github.com/IsurangaHerath" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 transition-colors">
-            <Github size={24} />
-          </a>
-          <a href="https://www.linkedin.com/in/isuranga-herath-1765b72b9" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 transition-colors">
-            <Linkedin size={24} />
-          </a>
-          <a href="mailto:navodyaisuranga10@gmail.com" className="text-gray-700 hover:text-blue-600 transition-colors">
-            <Mail size={24} />
-          </a>
-        </div>
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 32 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] },
+    },
+  };
+
+  return (
+    <section
+      id="home"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        backgroundColor: '#050505',
+        paddingTop: '5rem',
+      }}
+      aria-label="Hero section"
+    >
+      {/* Subtle grid background */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          maskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%)',
+        }}
+      />
+
+      {/* Floating orbs */}
+      <motion.div
+        aria-hidden="true"
+        animate={{
+          y: [0, -24, 0],
+          opacity: [0.04, 0.07, 0.04],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        style={{
+          position: 'absolute',
+          width: '500px',
+          height: '500px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)',
+          top: '-100px',
+          right: '-100px',
+          pointerEvents: 'none',
+        }}
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{
+          y: [0, 20, 0],
+          opacity: [0.03, 0.05, 0.03],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        style={{
+          position: 'absolute',
+          width: '400px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)',
+          bottom: '-80px',
+          left: '-80px',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div className="container-lg" style={{ position: 'relative', zIndex: 1 }}>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            gap: '0',
+          }}
+        >
+          {/* Profile image */}
+          <motion.div variants={itemVariants} style={{ marginBottom: '2rem' }}>
+            <div
+              style={{
+                position: 'relative',
+                width: '8.5rem',
+                height: '8.5rem',
+                margin: '0 auto',
+              }}
+            >
+              {/* Glow ring */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: '-3px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.12) 100%)',
+                  padding: '2px',
+                }}
+              />
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid #1A1A1A',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                <img
+                  src={PERSONAL_INFO.profileImage}
+                  alt={`${PERSONAL_INFO.name} profile photo`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  loading="eager"
+                />
+              </div>
+              {/* Online indicator */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '6px',
+                  right: '6px',
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  backgroundColor: '#4ade80',
+                  border: '2px solid #050505',
+                  zIndex: 2,
+                }}
+                aria-hidden="true"
+              />
+            </div>
+          </motion.div>
+
+          {/* Status badge */}
+          <motion.div variants={itemVariants} style={{ marginBottom: '1.5rem' }}>
+            <span
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.375rem 1rem',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '9999px',
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                color: '#888888',
+                letterSpacing: '0.05em',
+              }}
+            >
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  backgroundColor: '#4ade80',
+                  display: 'inline-block',
+                  animation: 'pulse 2s infinite',
+                }}
+              />
+              Available for opportunities
+            </span>
+          </motion.div>
+
+          {/* Name */}
+          <motion.h1 variants={itemVariants} className="display-xl" style={{ marginBottom: '1rem', color: '#FFFFFF' }}>
+            {PERSONAL_INFO.name}
+          </motion.h1>
+
+          {/* Typing animation */}
+          <motion.div
+            variants={itemVariants}
+            style={{
+              marginBottom: '1.5rem',
+              fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+              fontWeight: 500,
+              color: '#888888',
+              letterSpacing: '-0.01em',
+              minHeight: '2rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <span style={{ color: '#BDBDBD' }}>{typedText}</span>
+            <span className="typing-cursor" aria-hidden="true" />
+          </motion.div>
+
+          {/* Bio short */}
+          <motion.p
+            variants={itemVariants}
+            className="body-lg"
+            style={{ maxWidth: '36rem', marginBottom: '2.5rem', color: '#666666' }}
+          >
+            Undergraduate at University of Vavuniya, specializing in Computer Science with a focus on Data Science and AI.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            variants={itemVariants}
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.75rem',
+              justifyContent: 'center',
+              marginBottom: '2.5rem',
+            }}
+          >
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="btn-primary"
+            >
+              Get in Touch
+            </a>
+            <a
+              href="#projects"
+              onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="btn-secondary"
+            >
+              View Projects
+            </a>
+            <a
+              href={PERSONAL_INFO.cvUrl}
+              className="btn-secondary"
+              style={{ gap: '0.375rem' }}
+              aria-label="Download CV"
+            >
+              <Download size={15} />
+              Download CV
+            </a>
+          </motion.div>
+
+          {/* Social icons */}
+          <motion.div
+            variants={itemVariants}
+            style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}
+          >
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-icon"
+              aria-label="GitHub profile"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-icon"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="btn-icon"
+              aria-label="Send email"
+            >
+              <Mail size={18} />
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+        style={{
+          position: 'absolute',
+          bottom: '2rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '0.5rem',
+        }}
+        aria-hidden="true"
+      >
+        <span className="label-xs" style={{ color: '#444444' }}>Scroll</span>
+        <ArrowDown size={16} color="#444444" className="scroll-indicator" />
+      </motion.div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </section>
   );
 }

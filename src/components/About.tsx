@@ -1,59 +1,172 @@
-import { BookOpen, Brain, Code } from 'lucide-react';
+import { BookOpen, Brain, Code2, Database } from 'lucide-react';
+import { SectionHeader } from './ui/SectionHeader';
+import { AnimatedSection, StaggerContainer, StaggerItem } from './ui/AnimatedSection';
+import { PERSONAL_INFO, STATS, SKILLS } from '../constants/data';
+
+const featureCards = [
+  {
+    icon: BookOpen,
+    title: 'Education Focus',
+    desc: 'Specialized in Computer Science with emphasis on Data Science, Machine Learning, and AI technologies.',
+  },
+  {
+    icon: Brain,
+    title: 'Problem Solver',
+    desc: 'Passionate about using data-driven approaches and machine learning to tackle complex challenges.',
+  },
+  {
+    icon: Code2,
+    title: 'Developer',
+    desc: 'Proficient in both front-end and back-end technologies, with a strong foundation in modern development.',
+  },
+  {
+    icon: Database,
+    title: 'Data Driven',
+    desc: 'Experienced with databases, SQL, and data analysis pipelines for extracting meaningful insights.',
+  },
+];
+
+const skillCategories = ['Language', 'Framework', 'AI/ML', 'Database', 'Design', 'Tools'];
 
 export function About() {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl text-center mb-12 text-gray-900">
-          About Me
-        </h2>
-        
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-lg text-gray-700 mb-6">
-              I'm a passionate Computer Science undergraduate at the University of Vavuniya, pursuing a special degree with a focus on Data Science and Machine Learning. My academic journey is driven by a deep interest in leveraging technology to solve real-world problems.
-            </p>
-            <p className="text-lg text-gray-700 mb-6">
-              Beyond my degree, I've expanded my expertise through diplomas in Computer Hardware and Graphic Design, along with multiple online certifications in cutting-edge technologies. I'm committed to continuous learning and staying updated with the latest developments in AI and data science.
-            </p>
-            <p className="text-lg text-gray-700">
-              My goal is to contribute to innovative projects that harness the power of data and artificial intelligence to create meaningful impact.
-            </p>
-          </div>
+    <section
+      id="about"
+      style={{ backgroundColor: '#050505' }}
+      className="section-padding"
+      aria-label="About section"
+    >
+      <div className="container-lg">
+        <SectionHeader
+          eyebrow="About Me"
+          title="Turning Data into Impact"
+          subtitle="A Computer Science undergraduate passionate about leveraging AI and data science to solve real-world problems."
+        />
 
-          <div className="space-y-6">
-            <div className="flex gap-4 p-6 bg-blue-50 rounded-lg">
-              <BookOpen className="text-blue-600 flex-shrink-0" size={32} />
-              <div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-900">Education Focus</h3>
-                <p className="text-gray-700">
-                  Specialized in Computer Science with emphasis on Data Science, Machine Learning, and AI technologies
-                </p>
+        {/* Stats */}
+        <StaggerContainer style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '5rem' }} staggerDelay={0.1}>
+          {STATS.map((stat) => (
+            <StaggerItem key={stat.label}>
+              <div className="stat-card">
+                <div
+                  style={{
+                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                    fontWeight: 800,
+                    color: '#FFFFFF',
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1,
+                    marginBottom: '0.375rem',
+                  }}
+                >
+                  {stat.value}
+                </div>
+                <div className="label-xs">{stat.label}</div>
               </div>
-            </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
 
-            <div className="flex gap-4 p-6 bg-indigo-50 rounded-lg">
-              <Brain className="text-indigo-600 flex-shrink-0" size={32} />
-              <div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-900">Problem Solver</h3>
-                <p className="text-gray-700">
-                  Passionate about using data-driven approaches and machine learning to tackle complex challenges
+        {/* Bio + Feature cards */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '4rem',
+            marginBottom: '5rem',
+          }}
+        >
+          {/* Bio text */}
+          <AnimatedSection direction="left">
+            <div>
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: 700,
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.02em',
+                  marginBottom: '1.5rem',
+                }}
+              >
+                My Journey
+              </h3>
+              {PERSONAL_INFO.bio.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className="body-lg"
+                  style={{ marginBottom: i < PERSONAL_INFO.bio.length - 1 ? '1rem' : 0 }}
+                >
+                  {paragraph}
                 </p>
-              </div>
+              ))}
             </div>
+          </AnimatedSection>
 
-            <div className="flex gap-4 p-6 bg-purple-50 rounded-lg">
-              <Code className="text-purple-600 flex-shrink-0" size={32} />
-              <div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-900">Full Stack Skills</h3>
-                <p className="text-gray-700">
-                  Proficient in both front-end and back-end technologies, with strong foundation in modern web development
-                </p>
-              </div>
+          {/* Feature cards */}
+          <AnimatedSection direction="right">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.875rem' }}>
+              {featureCards.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <div key={card.title} className="card-dark" style={{ padding: '1.25rem' }}>
+                    <div
+                      style={{
+                        width: '2.25rem',
+                        height: '2.25rem',
+                        borderRadius: '0.5rem',
+                        background: '#1A1A1A',
+                        border: '1px solid #2A2A2A',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '0.875rem',
+                      }}
+                    >
+                      <Icon size={16} color="#888888" />
+                    </div>
+                    <h4
+                      style={{
+                        fontSize: '0.875rem',
+                        fontWeight: 600,
+                        color: '#FFFFFF',
+                        marginBottom: '0.375rem',
+                        letterSpacing: '-0.01em',
+                      }}
+                    >
+                      {card.title}
+                    </h4>
+                    <p className="body-sm">{card.desc}</p>
+                  </div>
+                );
+              })}
             </div>
-          </div>
+          </AnimatedSection>
         </div>
+
+        {/* Skills */}
+        <AnimatedSection>
+          <div
+            style={{
+              borderTop: '1px solid #1A1A1A',
+              paddingTop: '3rem',
+            }}
+          >
+            <p className="label-xs" style={{ marginBottom: '1.5rem' }}>Technologies & Skills</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {SKILLS.map((skill) => (
+                <span key={skill.name} className="skill-pill">
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
       </div>
+
+      <style>{`
+        @media (min-width: 640px) {
+          .stats-grid { grid-template-columns: repeat(4, 1fr) !important; }
+        }
+      `}</style>
     </section>
   );
 }

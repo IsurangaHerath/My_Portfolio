@@ -1,168 +1,377 @@
-import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, MapPin, Github, Linkedin, Download, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { SectionHeader } from './ui/SectionHeader';
+import { AnimatedSection } from './ui/AnimatedSection';
+import { PERSONAL_INFO } from '../constants/data';
+import { initEmailJS, sendContactForm, type ContactFormData } from '../services/emailService';
 
 export function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    try {
+      initEmailJS();
+    } catch (err) {
+      console.error('EmailJS init error:', err);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (submitStatus === 'success') {
+      const timer = setTimeout(() => setSubmitStatus('idle'), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const recipientEmail = 'navodyaisuranga10@gmail.com';
-    const subject = encodeURIComponent('Contact from Portfolio');
-    const body = encodeURIComponent(
-      `Hi, I would like to connect with you...\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    
-    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-    setFormData({ name: '', email: '', message: '' });
+    setSubmitStatus('idle');
+    setErrorMessage('');
+    setIsSubmitting(true);
+    try {
+      await sendContactForm(formData);
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (err) {
+      setSubmitStatus('error');
+      setErrorMessage(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl text-center mb-4 text-gray-900">
-          Get In Touch
-        </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out!
-        </p>
+    <section
+      id="contact"
+      style={{
+        backgroundColor: '#050505',
+        paddingTop: '7rem',
+        paddingBottom: '7rem',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div className="container-lg" style={{ position: 'relative', zIndex: 1 }}>
+        <SectionHeader
+          eyebrow="Contact"
+          title="Get In Touch"
+          subtitle="Have a project in mind or just want to say hello? I'd love to hear from you. Let's build something great together."
+        />
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-              Contact Information
-            </h3>
-            
-            <div className="space-y-6 mb-8">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-100 rounded-lg">
-                  <Mail className="text-blue-600" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Email</p>
-                  <a href="mailto:navodyaisuranga10@gmail.com" className="text-gray-700 hover:text-blue-600">navodyaisuranga10@gmail.com</a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-indigo-100 rounded-lg">
-                  <Phone className="text-indigo-600" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Phone</p>
-                  <p className="text-gray-700">+94 XX XXX XXXX</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <MapPin className="text-purple-600" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Location</p>
-                  <p className="text-gray-700">Vavuniya, Sri Lanka</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-gray-200">
-              <p className="font-semibold mb-4 text-gray-900">Connect with me:</p>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/IsurangaHerath"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-gray-100 rounded-lg text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
-                >
-                  <Github size={24} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/isuranga-herath-1765b72b9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-gray-100 rounded-lg text-gray-700 hover:bg-blue-600 hover:text-white transition-colors"
-                >
-                  <Linkedin size={24} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
-              Send a Message
-            </h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none resize-none"
-                  placeholder="Your message..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }}>
+          <AnimatedSection delay={0.1}>
+              <div
+                className="card-dark"
+                style={{
+                  padding: '2rem',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
               >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+                <span className="label-xs" style={{ marginBottom: '0.75rem' }}>
+                  Contact Information
+                </span>
 
-      <div className="mt-16 pt-8 border-t border-gray-200 text-center text-gray-600">
-        <p>© 2026 Isuranga Herath. All rights reserved.</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '2.5rem',
+                        height: '2.5rem',
+                        borderRadius: '9999px',
+                        backgroundColor: '#171717',
+                        border: '1px solid #2A2A2A',
+                        color: '#888888',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Mail size={18} />
+                    </div>
+                    <div>
+                      <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
+                        Email
+                      </span>
+                      <span className="body-base" style={{ color: '#BDBDBD' }}>
+                        {PERSONAL_INFO.email}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '2.5rem',
+                        height: '2.5rem',
+                        borderRadius: '9999px',
+                        backgroundColor: '#171717',
+                        border: '1px solid #2A2A2A',
+                        color: '#888888',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <MapPin size={18} />
+                    </div>
+                    <div>
+                      <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
+                        Location
+                      </span>
+                      <span className="body-base" style={{ color: '#BDBDBD' }}>
+                        {PERSONAL_INFO.location}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="divider" style={{ margin: '2rem 0' }} />
+
+                <div>
+                  <span className="label-xs" style={{ display: 'block', marginBottom: '1rem' }}>
+                    Connect with me
+                  </span>
+                  <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                    <a
+                      href={PERSONAL_INFO.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-icon"
+                      aria-label="GitHub"
+                    >
+                      <Github size={18} />
+                    </a>
+                    <a
+                      href={PERSONAL_INFO.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-icon"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin size={18} />
+                    </a>
+                  </div>
+                  <a
+                    href={PERSONAL_INFO.cvUrl}
+                    className="btn-secondary"
+                    style={{ display: 'inline-flex' }}
+                  >
+                    <Download size={18} />
+                    Download Resume
+                  </a>
+                </div>
+              </div>
+            </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+              <div
+                className="card-dark"
+                style={{
+                  padding: '2rem',
+                  height: '100%',
+                }}
+              >
+                <h3 className="heading-card" style={{ marginBottom: '1.5rem' }}>
+                  Send a Message
+                </h3>
+
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                  <div>
+                    <label
+                      className="label-xs"
+                      htmlFor="name"
+                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      className="input-dark"
+                      placeholder="Your full name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      className="label-xs"
+                      htmlFor="email"
+                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      className="input-dark"
+                      placeholder="you@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      className="label-xs"
+                      htmlFor="subject"
+                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                    >
+                      Subject
+                    </label>
+                    <input
+                      id="subject"
+                      type="text"
+                      name="subject"
+                      className="input-dark"
+                      placeholder="What's this about?"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      className="label-xs"
+                      htmlFor="message"
+                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      className="input-dark"
+                      placeholder="Tell me about your project or idea..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      style={{ resize: 'vertical', minHeight: '120px' }}
+                    />
+                  </div>
+
+                  <AnimatePresence mode="wait">
+                    {submitStatus === 'success' && (
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.75rem',
+                          padding: '1rem',
+                          backgroundColor: 'rgba(34, 197, 94, 0.08)',
+                          border: '1px solid rgba(34, 197, 94, 0.25)',
+                          borderRadius: '0.75rem',
+                          color: '#22c55e',
+                        }}
+                      >
+                        <CheckCircle2 size={20} />
+                        <span className="body-base" style={{ color: '#22c55e' }}>
+                          Message sent successfully! I'll get back to you soon.
+                        </span>
+                      </motion.div>
+                    )}
+
+                    {submitStatus === 'error' && (
+                      <motion.div
+                        key="error"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.75rem',
+                          padding: '1rem',
+                          backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                          border: '1px solid rgba(239, 68, 68, 0.25)',
+                          borderRadius: '0.75rem',
+                          color: '#ef4444',
+                        }}
+                      >
+                        <AlertCircle size={20} />
+                        <span className="body-base" style={{ color: '#ef4444' }}>
+                          {errorMessage}
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary"
+                    style={{
+                      opacity: isSubmitting ? 0.7 : 1,
+                      cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    }}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            width: '1rem',
+                            height: '1rem',
+                            border: '2px solid #050505',
+                            borderTopColor: 'transparent',
+                            borderRadius: '9999px',
+                            animation: 'spin 0.8s linear infinite',
+                          }}
+                        />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
+            </AnimatedSection>
+
+          <style>{`
+            @media (min-width: 768px) {
+              .contact-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+              }
+            }
+          `}</style>
+        </div>
       </div>
     </section>
   );

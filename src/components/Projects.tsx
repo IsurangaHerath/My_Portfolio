@@ -1,102 +1,91 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { SectionHeader } from './ui/SectionHeader';
+import { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
+import { ProjectCard } from './ProjectCard';
+import { PROJECTS } from '../constants/data';
 
 export function Projects() {
-  const projects = [
-    {
-      title: 'POS System',
-      description: 'A point of sale system for managing inventory, sales, and transactions',
-      technologies: ['Node.js', 'Express', 'MySQL', 'React', 'Vite', 'Electron'],
-      category: 'Desktop Application',
-      github: 'https://github.com/IsurangaHerath/POS_System',
-      image: '/images/projects/pos-system.jpg',
-    },
-    {
-      title: 'Task Scheduler',
-      description: 'Application to manage and schedule daily tasks and reminders',
-      technologies: ['React 18', 'Node.js', 'Express', 'JavaScript', 'SQLite'],
-      category: 'Web Application',
-      github: 'https://github.com/IsurangaHerath/Task_Scheduler',
-      image: '/images/projects/task-scheduler.jpg',
-    },
-    {
-      title: 'Online Voting System',
-      description: 'Digital platform for conducting secure online elections and voting',
-      technologies: ['Python', 'Flask', 'MySQL', 'HTML5', 'CSS3', 'JavaScript'],
-      category: 'Web Application',
-      github: 'https://github.com/IsurangaHerath/Online_Voting_System',
-      image: '/images/projects/voting-system.jpg',
-    },
-  ];
-
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl text-center mb-4 text-gray-900">
-          Projects
-        </h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          A showcase of academic and personal projects demonstrating my skills in data science, machine learning, and web development.
-        </p>
+    <section
+      id="projects"
+      style={{
+        backgroundColor: '#050505',
+        paddingTop: '7rem',
+        paddingBottom: '7rem',
+      }}
+    >
+      <div style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+        <SectionHeader
+          eyebrow="Projects"
+          title="Selected Works"
+          subtitle="A curated collection of projects showcasing my skills in full-stack development, data engineering, and building impactful applications."
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <div
-              key={i}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group"
-            >
-              <div className="project-image-container">
-                <img
-                    src={project.image}
-                    alt={`${project.title} Preview`}
-                    className="project-img w-full h-48 object-cover"
-                />
-              </div>
-              
-              <div className="p-6">
-                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full mb-3">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                  {project.title}
-                </h3>
-                <p className="text-gray-700 mb-4">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+        <StaggerContainer staggerDelay={0.1}>
+          <div
+            className="projects-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(1, 1fr)',
+              gap: '1.25rem',
+            }}
+          >
+            {PROJECTS.map((project) => (
+              <StaggerItem key={project.id}>
+                <ProjectCard project={project} />
+              </StaggerItem>
+            ))}
+          </div>
+        </StaggerContainer>
 
-                <div className="flex gap-4 pt-4 border-t border-gray-200">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    <Github size={18} />
-                    <span className="text-sm">Code</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 text-gray-400 cursor-not-allowed"
-                  >
-                    <ExternalLink size={18} />
-                    <span className="text-sm">Live Demo</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div
+          style={{
+            marginTop: '4rem',
+            backgroundColor: '#0D0D0D',
+            border: '1px solid #1E1E1E',
+            borderRadius: '1rem',
+            padding: '2rem',
+            textAlign: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '0.6875rem',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: '#888888',
+              marginBottom: '0.75rem',
+            }}
+          >
+            Always Building
+          </p>
+          <p
+            style={{
+              fontSize: '0.9375rem',
+              lineHeight: 1.65,
+              color: '#BDBDBD',
+              maxWidth: '40rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          >
+            I'm deeply committed to continuous learning and refining my craft. Every project teaches something new, and I'm passionate about creating applications that make a meaningful impact—always exploring new technologies and pushing boundaries.
+          </p>
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 768px) {
+          #projects .projects-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          #projects .projects-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
