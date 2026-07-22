@@ -8,7 +8,7 @@ import { Navigation } from './components/Navigation';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ minHeight: '100vh', backgroundColor: '#050505' }}>
       <Navigation />
       <Hero />
       <About />

@@ -66,11 +66,11 @@ export function Navigation() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
             height: '4rem',
+            gap: '2rem',
           }}
         >
-          {/* Logo */}
+          {/* Logo stays on the LEFT */}
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleLinkClick('#home'); }}
@@ -80,36 +80,39 @@ export function Navigation() {
               color: '#FFFFFF',
               textDecoration: 'none',
               letterSpacing: '-0.02em',
+              flexShrink: 0,
             }}
           >
             IH<span style={{ color: '#444444' }}>.</span>
           </a>
 
-          {/* Desktop links */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.25rem',
-            }}
-            className="desktop-nav"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleLinkClick(link.href); }}
-                className={`nav-link-item ${activeSection === link.href.slice(1) ? 'active' : ''}`}
-                style={{ padding: '0.375rem 0.875rem' }}
-                aria-current={activeSection === link.href.slice(1) ? 'page' : undefined}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+          {/* Spacer pushes everything else to the right */}
+          <div style={{ flex: 1 }} />
 
-          {/* Contact CTA (desktop) */}
-          <div className="desktop-nav">
+          {/* Nav links + Contact CTA on the RIGHT side */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="desktop-nav">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleLinkClick(link.href); }}
+                  className={`nav-link-item ${isActive ? 'active' : ''}`}
+                  style={{
+                    padding: '0.375rem 0.875rem',
+                    color: isActive ? '#FFFFFF' : '#888888',
+                    textDecoration: 'none',
+                    borderBottom: isActive ? '2px solid #F5F5F5' : '2px solid transparent',
+                    borderRadius: '0.375rem 0.375rem 0 0',
+                    transition: 'color 200ms, border-color 200ms',
+                  }}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); handleLinkClick('#contact'); }}
@@ -126,6 +129,15 @@ export function Navigation() {
             className="mobile-menu-btn"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0.5rem',
+            }}
           >
             <AnimatePresence mode="wait">
               {isMenuOpen ? (
@@ -158,6 +170,7 @@ export function Navigation() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -170,28 +183,31 @@ export function Navigation() {
             }}
           >
             <div style={{ padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleLinkClick(link.href); }}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  style={{
-                    padding: '0.75rem 0',
-                    fontSize: '0.9375rem',
-                    fontWeight: 500,
-                    color: activeSection === link.href.slice(1) ? '#FFFFFF' : '#888888',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid #1A1A1A',
-                    display: 'block',
-                    transition: 'color 200ms',
-                  }}
-                >
-                  {link.name}
-                </motion.a>
-              ))}
+              {navLinks.map((link, i) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleLinkClick(link.href); }}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    style={{
+                      padding: '0.75rem 0',
+                      fontSize: '0.9375rem',
+                      fontWeight: isActive ? 600 : 500,
+                      color: isActive ? '#FFFFFF' : '#888888',
+                      textDecoration: 'none',
+                      borderBottom: '1px solid #1A1A1A',
+                      display: 'block',
+                      transition: 'color 200ms',
+                    }}
+                  >
+                    {link.name}
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
         )}

@@ -16,10 +16,8 @@ export function SectionHeader({
   align = 'center',
   children,
 }: SectionHeaderProps) {
-  const alignClass = align === 'center' ? 'text-center items-center' : 'text-left items-start';
-
   return (
-    <AnimatedSection className={`flex flex-col ${alignClass} mb-16`}>
+    <AnimatedSection style={{ display: 'flex', flexDirection: 'column', alignItems: align === 'center' ? 'center' : 'flex-start', marginBottom: '4rem', textAlign: align === 'center' ? 'center' : 'left' }}>
       {eyebrow && (
         <span className="section-eyebrow">{eyebrow}</span>
       )}

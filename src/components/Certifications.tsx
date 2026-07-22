@@ -18,19 +18,21 @@ export function Certifications() {
           subtitle="Professional certifications that demonstrate my commitment to continuous learning and skill development."
         />
 
-        <StaggerContainer
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: '1.25rem',
-          }}
-          staggerDelay={0.08}
-        >
-          {CERTIFICATES.map((cert) => (
-            <StaggerItem key={cert.id}>
-              <CertificateCard cert={cert} />
-            </StaggerItem>
-          ))}
+        <StaggerContainer staggerDelay={0.1}>
+          <div
+            className="certifications-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(1, 1fr)',
+              gap: '1.25rem',
+            }}
+          >
+            {CERTIFICATES.map((cert) => (
+              <StaggerItem key={cert.id}>
+                <CertificateCard cert={cert} />
+              </StaggerItem>
+            ))}
+          </div>
         </StaggerContainer>
 
         {/* Bottom callout */}
@@ -50,6 +52,19 @@ export function Certifications() {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 640px) {
+          #certifications .certifications-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          #certifications .certifications-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

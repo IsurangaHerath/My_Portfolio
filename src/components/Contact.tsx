@@ -74,7 +74,7 @@ export function Contact() {
           subtitle="Have a project in mind or just want to say hello? I'd love to hear from you. Let's build something great together."
         />
 
-        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }}>
+        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '3rem' }}>
           <AnimatedSection delay={0.1}>
               <div
                 className="card-dark"
@@ -83,6 +83,8 @@ export function Contact() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
+                  maxWidth: '100%',
+                  minWidth: 0,
                 }}
               >
                 <span className="label-xs" style={{ marginBottom: '0.75rem' }}>
@@ -189,18 +191,21 @@ export function Contact() {
                 style={{
                   padding: '2rem',
                   height: '100%',
+                  maxWidth: '100%',
+                  minWidth: 0,
+                  overflow: 'hidden',
                 }}
               >
                 <h3 className="heading-card" style={{ marginBottom: '1.5rem' }}>
                   Send a Message
                 </h3>
 
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                  <div>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', maxWidth: '100%' }}>
+                  <div style={{ width: '100%' }}>
                     <label
                       className="label-xs"
                       htmlFor="name"
-                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                      style={{ display: 'block', marginBottom: '0.5rem', width: '100%' }}
                     >
                       Name
                     </label>
@@ -213,14 +218,15 @@ export function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      style={{ maxWidth: '100%', boxSizing: 'border-box' }}
                     />
                   </div>
 
-                  <div>
+                  <div style={{ width: '100%' }}>
                     <label
                       className="label-xs"
                       htmlFor="email"
-                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                      style={{ display: 'block', marginBottom: '0.5rem', width: '100%' }}
                     >
                       Email
                     </label>
@@ -233,14 +239,15 @@ export function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      style={{ maxWidth: '100%', boxSizing: 'border-box' }}
                     />
                   </div>
 
-                  <div>
+                  <div style={{ width: '100%' }}>
                     <label
                       className="label-xs"
                       htmlFor="subject"
-                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                      style={{ display: 'block', marginBottom: '0.5rem', width: '100%' }}
                     >
                       Subject
                     </label>
@@ -253,14 +260,15 @@ export function Contact() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
+                      style={{ maxWidth: '100%', boxSizing: 'border-box' }}
                     />
                   </div>
 
-                  <div>
+                  <div style={{ width: '100%' }}>
                     <label
                       className="label-xs"
                       htmlFor="message"
-                      style={{ display: 'block', marginBottom: '0.5rem' }}
+                      style={{ display: 'block', marginBottom: '0.5rem', width: '100%' }}
                     >
                       Message
                     </label>
@@ -273,7 +281,7 @@ export function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      style={{ resize: 'vertical', minHeight: '120px' }}
+                      style={{ resize: 'vertical', minHeight: '120px', maxWidth: '100%', boxSizing: 'border-box' }}
                     />
                   </div>
 
@@ -294,6 +302,7 @@ export function Contact() {
                           border: '1px solid rgba(34, 197, 94, 0.25)',
                           borderRadius: '0.75rem',
                           color: '#22c55e',
+                          maxWidth: '100%',
                         }}
                       >
                         <CheckCircle2 size={20} />
@@ -319,6 +328,7 @@ export function Contact() {
                           border: '1px solid rgba(239, 68, 68, 0.25)',
                           borderRadius: '0.75rem',
                           color: '#ef4444',
+                          maxWidth: '100%',
                         }}
                       >
                         <AlertCircle size={20} />

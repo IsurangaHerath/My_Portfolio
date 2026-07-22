@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Download, Calendar, Hash, Award } from 'lucide-react';
+import { ExternalLink, Download, Calendar, Award, ChevronRight } from 'lucide-react';
 import { Modal } from './ui/Modal';
 import type { Certificate } from '../constants/data';
 
@@ -28,7 +28,7 @@ function CertThumbnail({ cert }: { cert: Certificate }) {
       >
         <Award size={28} color="#333333" />
         <span style={{ fontSize: '0.6875rem', color: '#444444', fontWeight: 600, letterSpacing: '0.05em' }}>
-          {cert.category.toUpperCase()}
+          {(cert.category || '').toUpperCase()}
         </span>
       </div>
     );
@@ -101,7 +101,6 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
         </div>
         <div style={{ background: '#171717', border: '1px solid #2A2A2A', borderRadius: '0.75rem', padding: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: '0.25rem' }}>
-            <Hash size={12} color="#555555" />
             <span className="label-xs">Credential ID</span>
           </div>
           <p style={{ fontSize: '0.875rem', color: '#BDBDBD', fontWeight: 500, fontFamily: 'monospace' }}>
@@ -157,72 +156,88 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
 // ─── Certificate Card ─────────────────────────────────────────────────────────
 export function CertificateCard({ cert }: CertificateCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const cardBorder = isHovered ? '1px solid #3A3A3A' : '1px solid rgba(255, 255, 255, 0.06)';
+  const cardShadow = isHovered ? '0 8px 32px rgba(0,0,0,0.5)' : '0 4px 16px rgba(0,0,0,0.3)';
 
   return (
     <>
       <motion.div
-        layout
-        whileHover={{ y: -4 }}
-        transition={{ duration: 0.2, ease: 'easeOut' }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
+        className="card-glass"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onClick={() => setIsModalOpen(true)}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === 'Enter' && setIsModalOpen(true)}
         aria-label={`View ${cert.title} certificate details`}
-        className="card-dark"
-        style={{ cursor: 'pointer', overflow: 'hidden' }}
+        style={{
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          border: cardBorder,
+          boxShadow: cardShadow,
+          transition: 'border-color 250ms ease, box-shadow 250ms ease',
+        }}
       >
-        {/* Thumbnail */}
-        <div
-          style={{
-            width: '100%',
-            height: '140px',
-            borderBottom: '1px solid #2A2A2A',
-            overflow: 'hidden',
-          }}
-        >
-          <CertThumbnail cert={cert} />
+        {/* Card Thumbnail */}
+        <div style={{ width: '100%', height: '180px', overflow: 'hidden' }}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+            style={{ width: '100%', height: '100%' }}
+          >
+            <CertThumbnail cert={cert} />
+          </motion.div>
         </div>
 
-        {/* Body */}
-        <div style={{ padding: '1.25rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.625rem' }}>
+        {/* Card Body */}
+        <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
             <span className="badge-primary">{cert.category}</span>
-            <span style={{ fontSize: '0.6875rem', color: '#555555' }}>{cert.completionDate}</span>
+            <span className="badge">{cert.completionDate}</span>
           </div>
 
           <h3 className="heading-card" style={{ marginBottom: '0.375rem' }}>
             {cert.title}
           </h3>
-          <p className="body-sm" style={{ marginBottom: '1rem', color: '#555555' }}>
+          <p className="body-sm" style={{ marginBottom: '1rem', flex: 1 }}>
             {cert.institute}
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem', marginBottom: '1rem' }}>
+          {/* Tech Badges */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem', marginBottom: '1.25rem' }}>
             {cert.skills.slice(0, 3).map((skill) => (
-              <span key={skill} className="badge" style={{ fontSize: '0.625rem', padding: '0.125rem 0.5rem' }}>
+              <span key={skill} className="badge" style={{ fontSize: '0.6875rem' }}>
                 {skill}
               </span>
             ))}
             {cert.skills.length > 3 && (
-              <span className="badge" style={{ fontSize: '0.625rem', padding: '0.125rem 0.5rem', color: '#555555' }}>
+              <span className="badge" style={{ fontSize: '0.6875rem', color: '#555555' }}>
                 +{cert.skills.length - 3}
               </span>
             )}
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.375rem',
-              fontSize: '0.75rem',
-              color: '#555555',
-              transition: 'color 200ms',
-            }}
-          >
-            <ExternalLink size={12} />
-            Click to view details
+          {/* Footer actions */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #222222' }}>
+            <span className="body-sm" style={{ color: '#555555', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+              <ExternalLink size={12} />
+              View details
+            </span>
+            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              <button
+                onClick={(e) => { e.stopPropagation(); setIsModalOpen(true); }}
+                className="btn-ghost"
+                style={{ fontSize: '0.8125rem', gap: '0.25rem', padding: '0.25rem 0.5rem' }}
+              >
+                View Certificate <ChevronRight size={14} />
+              </button>
+            </motion.div>
           </div>
         </div>
       </motion.div>

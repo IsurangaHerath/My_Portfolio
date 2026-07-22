@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { useTypingAnimation } from '../hooks/useTypingAnimation';
 import { PERSONAL_INFO, TYPING_ROLES } from '../constants/data';
 
@@ -9,6 +10,7 @@ export function Hero() {
     deleteSpeed: 40,
     pauseDuration: 2200,
   });
+  const [imgError, setImgError] = useState(false);
 
   const containerVariants = {
     hidden: {},
@@ -108,60 +110,89 @@ export function Hero() {
             gap: '0',
           }}
         >
-          {/* Profile image */}
-          <motion.div variants={itemVariants} style={{ marginBottom: '2rem' }}>
+          {/* Profile image - fixed with radial glow and larger size */}
+          <motion.div
+            variants={itemVariants}
+            style={{
+              marginBottom: '2rem',
+              position: 'relative',
+              width: '10rem',
+              height: '10rem',
+              margin: '0 auto 2rem auto',
+            }}
+          >
+            {/* Soft radial glow behind image */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '12rem',
+                height: '12rem',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 40%, transparent 70%)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }}
+            />
+            {/* Image circle */}
             <div
               style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                border: '2px solid #1A1A1A',
+                overflow: 'hidden',
                 position: 'relative',
-                width: '8.5rem',
-                height: '8.5rem',
-                margin: '0 auto',
+                zIndex: 1,
+                boxShadow: '0 0 60px rgba(0, 0, 0, 0.5), 0 0 120px rgba(255, 255, 255, 0.02)',
               }}
             >
-              {/* Glow ring */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: '-3px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.12) 100%)',
-                  padding: '2px',
-                }}
-              />
-              <div
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  border: '2px solid #1A1A1A',
-                  position: 'relative',
-                  zIndex: 1,
-                }}
-              >
+              {!imgError ? (
                 <img
                   src={PERSONAL_INFO.profileImage}
                   alt={`${PERSONAL_INFO.name} profile photo`}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   loading="eager"
+                  onError={() => setImgError(true)}
                 />
-              </div>
-              {/* Online indicator */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '6px',
-                  right: '6px',
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%',
-                  backgroundColor: '#4ade80',
-                  border: '2px solid #050505',
-                  zIndex: 2,
-                }}
-                aria-hidden="true"
-              />
+              ) : (
+                <div
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '50%',
+                    background: '#111111',
+                    color: '#555555',
+                    fontSize: '2.5rem',
+                    fontWeight: 700,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 0 60px rgba(0, 0, 0, 0.5), 0 0 120px rgba(255, 255, 255, 0.02)',
+                  }}
+                >
+                  {PERSONAL_INFO.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                </div>
+              )}
             </div>
+            {/* Online indicator */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '8px',
+                right: '8px',
+                width: '14px',
+                height: '14px',
+                borderRadius: '50%',
+                backgroundColor: '#4ade80',
+                border: '2px solid #050505',
+                zIndex: 2,
+              }}
+              aria-hidden="true"
+            />
           </motion.div>
 
           {/* Status badge */}
@@ -228,7 +259,7 @@ export function Hero() {
             Undergraduate at University of Vavuniya, specializing in Computer Science with a focus on Data Science and AI.
           </motion.p>
 
-          {/* CTA buttons */}
+          {/* CTA buttons - Download CV removed as requested */}
           <motion.div
             variants={itemVariants}
             style={{
@@ -253,18 +284,9 @@ export function Hero() {
             >
               View Projects
             </a>
-            <a
-              href={PERSONAL_INFO.cvUrl}
-              className="btn-secondary"
-              style={{ gap: '0.375rem' }}
-              aria-label="Download CV"
-            >
-              <Download size={15} />
-              Download CV
-            </a>
           </motion.div>
 
-          {/* Social icons */}
+          {/* Social icons - GitHub, LinkedIn, Contact (Mail) */}
           <motion.div
             variants={itemVariants}
             style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}

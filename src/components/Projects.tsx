@@ -13,7 +13,7 @@ export function Projects() {
         paddingBottom: '7rem',
       }}
     >
-      <div style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+      <div className="container-lg">
         <SectionHeader
           eyebrow="Projects"
           title="Selected Works"

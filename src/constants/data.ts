@@ -10,7 +10,7 @@ export const PERSONAL_INFO = {
   location: 'Vavuniya, Sri Lanka',
   github: 'https://github.com/IsurangaHerath',
   linkedin: 'https://www.linkedin.com/in/isuranga-herath-1765b72b9',
-  profileImage: '/profile.jpg',
+  profileImage: `${import.meta.env.BASE_URL}profile.jpg`,
   cvUrl: '#', // Replace with actual CV URL when available
   bio: [
     "I'm a passionate Computer Science undergraduate at the University of Vavuniya, pursuing a special degree with a focus on Data Science and Machine Learning. My academic journey is driven by a deep interest in leveraging technology to solve real-world problems.",

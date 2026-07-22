@@ -33,6 +33,7 @@ export function Modal({ isOpen, onClose, children, maxWidth = '800px' }: ModalPr
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          key="modal-overlay"
           className="modal-overlay"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -43,6 +44,7 @@ export function Modal({ isOpen, onClose, children, maxWidth = '800px' }: ModalPr
           aria-modal="true"
         >
           <motion.div
+            key="modal-content"
             className="modal-content"
             style={{ maxWidth }}
             initial={{ opacity: 0, scale: 0.95, y: 24 }}

@@ -3,7 +3,8 @@ import { init, send } from '@emailjs/browser';
 export function initEmailJS() {
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   if (!publicKey) {
-    throw new Error('VITE_EMAILJS_PUBLIC_KEY is not set in environment variables.');
+    console.warn('EmailJS public key not configured. Contact form will not send messages.');
+    return;
   }
   init(publicKey);
 }

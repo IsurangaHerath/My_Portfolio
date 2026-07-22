@@ -1,7 +1,16 @@
-import { BookOpen, Brain, Code2, Database } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { BookOpen, Brain, Code2, Database, FolderGit2, Award, Layers, Calendar } from 'lucide-react';
 import { SectionHeader } from './ui/SectionHeader';
 import { AnimatedSection, StaggerContainer, StaggerItem } from './ui/AnimatedSection';
 import { PERSONAL_INFO, STATS, SKILLS } from '../constants/data';
+
+const statIcons: Record<string, React.ReactElement> = {
+  'Projects Built': <FolderGit2 size={22} />,
+  'Certifications': <Award size={22} />,
+  'Technologies': <Layers size={22} />,
+  'Years Learning': <Calendar size={22} />,
+};
 
 const featureCards = [
   {
@@ -43,28 +52,86 @@ export function About() {
           subtitle="A Computer Science undergraduate passionate about leveraging AI and data science to solve real-world problems."
         />
 
-        {/* Stats */}
-        <StaggerContainer style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '5rem' }} staggerDelay={0.1}>
+        {/* Stats - ONE large analytics container with 4 horizontal sections */}
+        <StaggerContainer className="stats-grid" style={{
+          background: '#1A1A1A',
+          borderRadius: '1rem',
+          overflow: 'hidden',
+          border: '1px solid #1E1E1E',
+        }} staggerDelay={0.1}>
           {STATS.map((stat) => (
             <StaggerItem key={stat.label}>
-              <div className="stat-card">
-                <div
-                  style={{
-                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+              <motion.div
+                className="stat-item"
+                whileHover={{ backgroundColor: '#111111' }}
+                transition={{ duration: 0.2 }}
+                style={{ cursor: 'default' }}
+              >
+                <div style={{
+                  width: '3rem',
+                  height: '3rem',
+                  borderRadius: '9999px',
+                  background: '#111111',
+                  border: '1px solid #2A2A2A',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#888888',
+                  flexShrink: 0,
+                }}>
+                  {statIcons[stat.label]}
+                </div>
+                <div>
+                  <div style={{
+                    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                     fontWeight: 800,
                     color: '#FFFFFF',
                     letterSpacing: '-0.03em',
                     lineHeight: 1,
-                    marginBottom: '0.375rem',
-                  }}
-                >
-                  {stat.value}
+                  }}>
+                    {stat.value}
+                  </div>
+                  <div style={{
+                    fontSize: '0.875rem',
+                    color: '#888888',
+                    marginTop: '0.375rem',
+                  }}>
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="label-xs">{stat.label}</div>
-              </div>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        <style>{`
+          .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1px;
+          }
+          .stats-grid .stat-item {
+            padding: 1.5rem 2rem;
+            display: flex !important;
+            align-items: center;
+            gap: 1rem;
+            background: #0D0D0D;
+            transition: background-color 200ms;
+          }
+          .stats-grid .stat-item:hover {
+            background-color: #111111;
+          }
+          @media (min-width: 640px) {
+            .stats-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (min-width: 1024px) {
+            .stats-grid {
+              grid-template-columns: repeat(4, 1fr);
+            }
+          }
+        `}</style>
 
         {/* Bio + Feature cards */}
         <div
@@ -161,12 +228,6 @@ export function About() {
           </div>
         </AnimatedSection>
       </div>
-
-      <style>{`
-        @media (min-width: 640px) {
-          .stats-grid { grid-template-columns: repeat(4, 1fr) !important; }
-        }
-      `}</style>
     </section>
   );
 }

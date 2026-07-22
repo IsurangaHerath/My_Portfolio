@@ -7,6 +7,7 @@ interface AnimatedSectionProps {
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   distance?: number;
+  style?: React.CSSProperties;
 }
 
 export function AnimatedSection({
@@ -15,6 +16,7 @@ export function AnimatedSection({
   delay = 0,
   direction = 'up',
   distance = 32,
+  style = {},
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -43,6 +45,7 @@ export function AnimatedSection({
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

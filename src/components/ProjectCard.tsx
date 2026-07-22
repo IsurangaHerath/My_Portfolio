@@ -25,7 +25,7 @@ function ProjectThumbnail({ project }: { project: Project }) {
         }}
       >
         <span style={{ fontSize: '0.75rem', color: '#555555', fontWeight: 600, letterSpacing: '0.05em' }}>
-          {project.category.toUpperCase()}
+          {(project.category || '').toUpperCase()}
         </span>
       </div>
     );
