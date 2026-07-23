@@ -170,7 +170,7 @@ export function About() {
 
           {/* Feature cards */}
           <AnimatedSection direction="right">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.875rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.875rem',  paddingTop: '2rem' }}>
               {featureCards.map((card) => {
                 const Icon = card.icon;
                 return (

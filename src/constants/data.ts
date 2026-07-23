@@ -94,8 +94,9 @@ export const EDUCATION: EducationItem[] = [
     highlights: [
       'Data Science and Analytics',
       'Machine Learning and Artificial Intelligence',
-      'Python Programming and Data Structures',
-      'Database Management and SQL',
+      'Python Programming' ,
+      'Data Structures',
+      'Database Management Systems',
       'Software Engineering',
       'Computer Networks',
     ],
@@ -106,7 +107,7 @@ export const EDUCATION: EducationItem[] = [
   {
     id: 'alevel',
     type: 'alevel',
-    institution: 'Your AL School Name',
+    institution: 'St. Joseph Vaz Collage, Wennappuwa',
     degree: 'Advanced Level (A/L)',
     duration: '2018 – 2020',
     status: 'Completed',
@@ -121,7 +122,7 @@ export const EDUCATION: EducationItem[] = [
   {
     id: 'olevel',
     type: 'olevel',
-    institution: 'Your OL School Name',
+    institution: 'President Collage, Nattandiya',
     degree: 'Ordinary Level (O/L)',
     duration: '2012 – 2018',
     status: 'Completed',
@@ -129,7 +130,7 @@ export const EDUCATION: EducationItem[] = [
       'Completed 9 subjects',
     ],
     achievements: [
-      'Strong academic foundation in sciences and mathematics',
+      'Achieved eligibility for Advanced Level studies',
     ],
   },
 ];
@@ -164,8 +165,9 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Comprehensive coverage of Python programming from fundamentals to advanced concepts including OOP, data structures, file handling, and best practices.',
     skills: ['Python', 'OOP', 'Data Structures', 'Algorithms'],
     category: 'Programming',
-    image: '/images/certifications/python-cert.jpg',
+    image: 'public/images/certifications/python_programming.png',
   },
+  
   {
     id: 'ai',
     title: 'Artificial Intelligence',

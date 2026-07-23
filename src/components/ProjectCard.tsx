@@ -21,7 +21,7 @@ function ProjectThumbnail({ project }: { project: Project }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%)',
+          background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
         }}
       >
         <span style={{ fontSize: '0.75rem', color: '#555555', fontWeight: 600, letterSpacing: '0.05em' }}>
@@ -70,15 +70,31 @@ export function ProjectCard({ project }: ProjectCardProps) {
         }}
       >
         {/* Card Thumbnail */}
-        <div style={{ width: '100%', height: '180px', overflow: 'hidden' }}>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-            style={{ width: '100%', height: '100%' }}
-          >
-            <ProjectThumbnail project={project} />
-          </motion.div>
-        </div>
+        <div
+  style={{
+    height: '180px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'linear-gradient(135deg, rgb(26, 26, 26)100%)',
+    borderBottom: '1px solid #2A2A2A',
+    padding: '2rem',
+    textAlign: 'center',
+  }}
+>
+  <h2
+    style={{
+      fontSize: '1rem',
+      color: '#FFFFFF',
+      marginBottom: '0.5rem',
+      letterSpacing: '-0.03em',
+    }}
+  >
+    {project.title}
+  </h2>
+
+</div>
 
         {/* Card Body */}
         <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>

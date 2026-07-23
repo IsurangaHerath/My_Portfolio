@@ -44,13 +44,43 @@ function CertThumbnail({ cert }: { cert: Certificate }) {
     />
   );
 }
+function CertificateCardThumbnail({ cert }: { cert: Certificate }) {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
+        padding: '1.5rem',
+      }}
+    >
+      <h2
+        style={{
+          color: '#FFFFFF',
+          fontSize: '1rem',
+          fontWeight: 700,
+        }}
+      >
+        {cert.title}
+      </h2>
+    </div>
+  );
+}
 
 // ─── Modal Content ─────────────────────────────────────────────────────────────
 function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () => void }) {
+  const [showImageViewer, setShowImageViewer] = useState(false);
+  
   return (
     <div style={{ padding: '2rem' }}>
       {/* Image */}
       <div
+        onClick={() => setShowImageViewer(true)}
         style={{
           width: '100%',
           height: '220px',
@@ -149,6 +179,37 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
           Close
         </button>
       </div>
+      {showImageViewer && (
+  <div
+    onClick={() => setShowImageViewer(false)}
+    style={{
+      position: 'fixed',
+      inset: 0,
+      background: 'rgba(0,0,0,0.65)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+      cursor: 'zoom-out',
+      padding: '2rem',
+    }}
+  >
+    <img
+      src={cert.image}
+      alt={cert.title}
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        maxWidth: '95vw',
+        maxHeight: '95vh',
+        objectFit: 'contain',
+        borderRadius: '12px',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
+      }}
+    />
+  </div>
+)}
     </div>
   );
 }
@@ -191,7 +252,7 @@ export function CertificateCard({ cert }: CertificateCardProps) {
             transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
             style={{ width: '100%', height: '100%' }}
           >
-            <CertThumbnail cert={cert} />
+            <CertificateCardThumbnail cert={cert} />  
           </motion.div>
         </div>
 

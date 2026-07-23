@@ -56,10 +56,11 @@ export function AnimatedSection({
 interface StaggerContainerProps {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   staggerDelay?: number;
 }
 
-export function StaggerContainer({ children, className = '', staggerDelay = 0.08 }: StaggerContainerProps) {
+export function StaggerContainer({ children, className = '', style,  staggerDelay = 0.08 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-60px' });
 
