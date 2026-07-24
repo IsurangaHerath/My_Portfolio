@@ -165,7 +165,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Introduces core programming principles, logic building, and standard Python syntax.',
     skills: ['Python (Programming Language)', 'Functional Programming', 'Problem Solving', 'Algorithms'],
     category: 'Programming',
-    image: `${import.meta.env.BASE_URL}images/certifications/python_for_biginners.PNG`,
+    image: `${import.meta.env.BASE_URL}images/certifications/python_for_beginners.PNG`,
   },
   {
     id: 'ml',
@@ -178,7 +178,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Self-paced online course that teaches you how to build computer programs that learn from data to make predictions and automated decisions—without needing a background in complex math.',
     skills: ['Machine Learning', 'Data Classification', 'Cluster', 'Model Evaluatio'],
     category: 'Machine Learning',
-    image: 'public/images/certifications/ml_biginner.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/ml_beginner.png`,
   },
   {
     id: 'python2',
@@ -191,7 +191,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Moves beyond basic scripts into real-world software development, object-oriented design, and external data handling.',
     skills: ['Procedural Programming', 'OOP', 'Data Structures', 'Data Manipulation'],
     category: 'Programming',
-    image: 'public/images/certifications/python_programming.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/python_programming.png`,
   },
   {
     id: 'js',
@@ -204,7 +204,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'The curriculum is organized into step-by-step modules spanning core fundamentals to advanced server communication and modern standards',
     skills: ['Document Object Model (DOM)', 'Asynchronous Data Retrieval', 'Storage Management', 'User Interaction'],
     category: 'Web Development',
-    image: 'public/images/certifications/java_script.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/java_script.png`,
   },
   {
     id: 'sql1',
@@ -217,7 +217,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the Introduction to SQL certification from SoloLearn, gaining foundational knowledge of relational databases, SQL queries, and database management. Developed skills in writing SQL statements, retrieving and manipulating data, working with tables, filtering records, and understanding database structures. This certification strengthened my ability to manage and analyze data effectively for software development and data-driven applications.',
     skills: ['SQL', 'MySQL', 'Relational Databases', 'Database Management System (DBMS)', 'Database Management System (DBMS)'],
     category: 'Database',
-    image: 'public/images/certifications/introduction_sql.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/introduction_sql.png`,
   },
   {
     id: 'sql2',
@@ -230,7 +230,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the SQL Intermediate certification from SoloLearn, developing intermediate-level skills in database querying, data manipulation, and relational database management. Learned advanced SQL concepts including complex queries, joins, filtering, sorting, aggregation, and efficient data retrieval techniques. This certification strengthened my ability to work with structured data and build data-driven applications.',
     skills: ['SQL', 'Database Design', 'MySQL', 'Query Optimization', 'Stored Procedures'],
     category: 'Database',
-    image: 'public/images/certifications/sql_intermediate.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/sql_intermediate.png`,
   },
   {
     id: 'git',
@@ -243,7 +243,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the GIT, GitLab, and GitHub Fundamentals for Software Developers certification from Udemy, gaining practical knowledge of version control systems and collaborative software development workflows. Learned Git commands, repository management, branching, merging, version tracking, and using GitHub/GitLab for project collaboration.',
     skills: ['GIT', 'GitHub', 'Gitlab', 'Version Control', 'Source Code Management'],
     category: 'Version Control',
-    image: 'public/images/certifications/version_control.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/version_control.png`,
   },
   {
     id: 'prompt',
@@ -256,7 +256,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the Prompt Engineering Application certification from Simplilearn, gaining practical knowledge of Generative AI, Large Language Models (LLMs), and effective prompt design techniques. Learned how to create, optimize, and evaluate prompts to improve AI-generated responses and build AI-powered solutions.',
     skills: ['Prompt Engineering', 'Generative AI', 'Large Language Models (LLM)', 'Artificial Intelligence (AI)', 'NLP'],
     category: 'Prompt Engineering',
-    image: 'public/images/certifications/prompt_engineering.png',
+    image: `${import.meta.env.BASE_URL}images/certifications/prompt_engineering.png`,
   },
 ];
 
