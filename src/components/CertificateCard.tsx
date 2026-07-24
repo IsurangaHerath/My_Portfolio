@@ -24,6 +24,7 @@ function CertThumbnail({ cert }: { cert: Certificate }) {
           justifyContent: 'center',
           background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
           gap: '0.5rem',
+          paddingRight: '10rem'
         }}
       >
         <Award size={28} color="#333333" />
@@ -56,7 +57,6 @@ function CertificateCardThumbnail({ cert }: { cert: Certificate }) {
         alignItems: 'center',
         textAlign: 'center',
         background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
-        padding: '1.5rem',
       }}
     >
       <h2

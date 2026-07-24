@@ -81,9 +81,10 @@ export function Navigation() {
               textDecoration: 'none',
               letterSpacing: '-0.02em',
               flexShrink: 0,
+              textAlign: 'center'
             }}
           >
-            IH<span style={{ color: '#444444' }}>.</span>
+            Isuranga <br /> Herath<span style={{ color: '#444444' }}>.</span>
           </a>
 
           {/* Spacer pushes everything else to the right */}

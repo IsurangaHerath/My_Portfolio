@@ -136,6 +136,7 @@ export function Contact() {
                     >
                       <MapPin size={18} />
                     </div>
+                    
                     <div>
                       <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
                         Location

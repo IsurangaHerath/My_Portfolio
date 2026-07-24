@@ -327,7 +327,7 @@ export function Hero() {
         transition={{ delay: 1.5, duration: 0.6 }}
         style={{
           position: 'absolute',
-          bottom: '2rem',
+          bottom: '0.1rem',
           left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex',
