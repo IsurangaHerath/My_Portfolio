@@ -165,7 +165,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Introduces core programming principles, logic building, and standard Python syntax.',
     skills: ['Python (Programming Language)', 'Functional Programming', 'Problem Solving', 'Algorithms'],
     category: 'Programming',
-    image: '/images/certifications/python_for_biginners.PNG',
+    image: `${import.meta.env.BASE_URL}images/certifications/python_for_biginners.PNG`,
   },
   {
     id: 'ml',
