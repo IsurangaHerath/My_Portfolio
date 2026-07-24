@@ -290,16 +290,17 @@ export const PROJECTS: Project[] = [
   {
     id: 'pos-system',
     title: 'POS System',
-    shortDescription: 'A point of sale system for managing inventory, sales, and transactions',
-    description: 'A comprehensive Point of Sale (POS) system built as a desktop application using Electron. It provides businesses with full inventory management, real-time sales tracking, transaction history, and reporting capabilities.',
-    category: 'Desktop Application',
+    shortDescription: 'A point of sale system for managing inventory, sales, and products',
+    description: 'A comprehensive Point of Sale (POS) system built as a web application. It provides businesses with full inventory management, real-time sales tracking, transaction history, and reporting capabilities.',
+    category: 'Web Application',
     status: 'Completed',
     role: 'Full Stack Developer',
     duration: '3 months',
     technologies: ['Node.js', 'Express', 'MySQL', 'React', 'Vite', 'Electron'],
     github: 'https://github.com/IsurangaHerath/POS_System',
     image: '/images/projects/pos-system.jpg',
-    images: ['/images/projects/pos-system.jpg'],
+    images: [`${import.meta.env.BASE_URL}images/projects/pos_system/signup.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/login.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/dashboard.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/products.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/settings.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/user.png`],
+    liveUrl: 'https://pos-system-1-aia1.onrender.com/',
     features: [
       'Inventory management with real-time stock tracking',
       'Sales processing and transaction management',
@@ -314,21 +315,21 @@ export const PROJECTS: Project[] = [
       'Ensuring data consistency across concurrent operations',
     ],
     solutions: [
-      'Used Electron IPC for secure communication between main and renderer processes',
+      'Used TS for secure communication between main and renderer processes',
       'Implemented local MySQL with connection pooling for reliability',
       'Added transaction locking mechanisms to prevent data conflicts',
     ],
     lessonsLearned: [
-      'Desktop app architecture differs significantly from web apps',
+      'Web app architecture.',
       'Importance of data integrity in financial applications',
-      'How to structure Electron + React + Vite projects effectively',
+      'How to structure React + Vite projects effectively',
     ],
     futureImprovements: [
       'Add cloud sync for multi-branch support',
       'Implement barcode scanner integration',
       'Add advanced analytics and custom report generation',
     ],
-    architecture: 'Electron main process handles system-level operations and database connections via MySQL. The renderer process runs a React/Vite SPA. Communication happens via IPC channels. Express API layer handles business logic.',
+    architecture: 'TS main process handles system-level operations and database connections via MySQL. The renderer process runs a React/Vite SPA. Communication happens via IPC channels. Express API layer handles business logic.',
   },
   {
     id: 'task-scheduler',
@@ -343,6 +344,7 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/IsurangaHerath/Task_Scheduler',
     image: '/images/projects/task-scheduler.jpg',
     images: ['/images/projects/task-scheduler.jpg'],
+    liveUrl: '#',
     features: [
       'Create, edit, and delete tasks with due dates',
       'Priority levels (High, Medium, Low)',
@@ -385,6 +387,7 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/IsurangaHerath/Online_Voting_System',
     image: '/images/projects/voting-system.jpg',
     images: ['/images/projects/voting-system.jpg'],
+    liveUrl: '#',
     features: [
       'Secure voter registration and authentication',
       'One vote per user enforcement',

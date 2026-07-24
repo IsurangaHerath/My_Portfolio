@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { X, Github, ExternalLink, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Project } from '../constants/data';
 
@@ -20,6 +21,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
     setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  const [isImageOpen, setIsImageOpen] = useState(false);
+
   return (
     <div style={{ padding: '2rem' }}>
       {/* Banner thumbnail */}
@@ -35,20 +38,25 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           position: 'relative',
         }}
       >
-        <img
+                <img
           src={images[currentImageIndex]}
           alt={`${project.title} screenshot`}
+          onClick={() => setIsImageOpen(true)}
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
             transition: 'opacity 0.3s ease-in-out',
+            cursor: 'zoom-in',
           }}
         />
         {images.length > 1 && (
           <>
             <button
-              onClick={goToPrev}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrev();
+              }}
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -69,7 +77,10 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <ChevronLeft size={20} />
             </button>
             <button
-              onClick={goToNext}
+              onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
               style={{
                 position: 'absolute',
                 top: '50%',
@@ -102,7 +113,10 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               {images.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setCurrentImageIndex(i)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex(i);
+                  }}
                   style={{
                     width: '0.5rem',
                     height: '0.5rem',
@@ -275,6 +289,47 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         )}
         <button onClick={onClose} className="btn-ghost">Close</button>
       </div>
+
+      <AnimatePresence>
+  {isImageOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      onClick={() => setIsImageOpen(false)}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(0,0,0,0.75)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+        cursor: 'zoom-out',
+      }}
+    >
+      <motion.img
+        src={images[currentImageIndex]}
+        alt={project.title}
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.8 }}
+        transition={{ duration: 0.25 }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          maxWidth: '90vw',
+          maxHeight: '90vh',
+          objectFit: 'contain',
+          borderRadius: '12px',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+        }}
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 }
