@@ -307,9 +307,15 @@ export function Contact() {
                         }}
                       >
                         <CheckCircle2 size={20} />
+                        <div>
                         <span className="body-base" style={{ color: '#22c55e' }}>
-                          Message sent successfully! I'll get back to you soon.
+                          Message sent successfully (offline mode).
                         </span>
+                        <br />
+                        <span className="body-sm" style={{ color: '#22c55e', marginTop: '0.25rem', display: 'inline-block' }}>
+                          Contact me directly at <strong>{PERSONAL_INFO.phone}</strong> for urgent inquiries.
+                        </span>
+                      </div>
                       </motion.div>
                     )}
 
