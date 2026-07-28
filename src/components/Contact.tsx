@@ -76,55 +76,55 @@ export function Contact() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '2.5rem',
-                        height: '2.5rem',
-                        borderRadius: '9999px',
-                        backgroundColor: 'var(--bg-card)',
-                        border: '1px solid var(--border)',
-                        color: 'var(--text-muted)',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <Mail size={18} />
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '2.5rem',
+                          height: '2.5rem',
+                          borderRadius: '9999px',
+                          backgroundColor: 'rgba(34, 197, 94, 0.08)',
+                          border: '1px solid rgba(34, 197, 94, 0.25)',
+                          color: '#22c55e',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Mail size={18} />
+                      </div>
+                      <div>
+                        <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem', color: '#22c55e' }}>
+                          Email
+                        </span>
+                        <span className="body-base" style={{ color: '#22c55e' }}>
+                          {PERSONAL_INFO.email}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
-                        Email
-                      </span>
-                      <span className="body-base" style={{ color: 'var(--text-secondary)' }}>
-                        {PERSONAL_INFO.email}
-                      </span>
-                    </div>
-                  </div>
 
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '2.5rem',
-                        height: '2.5rem',
-                        borderRadius: '9999px',
-                        backgroundColor: 'var(--bg-card)',
-                        border: '1px solid var(--border)',
-                        color: 'var(--text-muted)',
-                        flexShrink: 0,
-                      }}
-                    >
-                      <MapPin size={18} />
-                    </div>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '2.5rem',
+                          height: '2.5rem',
+                          borderRadius: '9999px',
+                          backgroundColor: 'rgba(34, 197, 94, 0.08)',
+                          border: '1px solid rgba(34, 197, 94, 0.25)',
+                          color: '#22c55e',
+                          flexShrink: 0,
+                        }}
+                      >
+                        <MapPin size={18} />
+                      </div>
                     
                     <div>
-                      <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
+                      <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem', color: '#22c55e' }}>
                         Location
                       </span>
-                      <span className="body-base" style={{ color: 'var(--text-secondary)' }}>
+                      <span className="body-base" style={{ color: '#22c55e' }}>
                         {PERSONAL_INFO.location}
                       </span>
                     </div>
@@ -282,20 +282,20 @@ export function Contact() {
                           alignItems: 'center',
                           gap: '0.75rem',
                           padding: '1rem',
-                          backgroundColor: 'rgba(34, 197, 94, 0.08)',
-                          border: '1px solid rgba(34, 197, 94, 0.25)',
+                          backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                          border: '1px solid rgba(239, 68, 68, 0.25)',
                           borderRadius: '0.75rem',
-                          color: '#22c55e',
+                          color: '#ef4444',
                           maxWidth: '100%',
                         }}
                       >
                         <CheckCircle2 size={20} />
                         <div>
-                        <span className="body-base" style={{ color: '#22c55e' }}>
+                        <span className="body-base" style={{ color: '#ef4444' }}>
                           Message sending is not working at the moment.
                         </span>
                         <br />
-                        <span className="body-sm" style={{ color: '#22c55e', marginTop: '0.25rem', display: 'inline-block' }}>
+                        <span className="body-sm" style={{ color: '#ef4444', marginTop: '0.25rem', display: 'inline-block' }}>
                           Please contact <strong>{PERSONAL_INFO.name}</strong> directly at <strong>{PERSONAL_INFO.phone}</strong>
                         </span>
                       </div>
