@@ -8,7 +8,7 @@ export function Projects() {
     <section
       id="projects"
       style={{
-        backgroundColor: '#050505',
+        backgroundColor: 'var(--bg-primary)',
         paddingTop: '7rem',
         paddingBottom: '7rem',
       }}
@@ -40,8 +40,8 @@ export function Projects() {
         <div
           style={{
             marginTop: '4rem',
-            backgroundColor: '#0D0D0D',
-            border: '1px solid #1E1E1E',
+            backgroundColor: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
             borderRadius: '1rem',
             padding: '2rem',
             textAlign: 'center',
@@ -53,7 +53,7 @@ export function Projects() {
               fontWeight: 600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#888888',
+              color: 'var(--text-muted)',
               marginBottom: '0.75rem',
             }}
           >
@@ -63,7 +63,7 @@ export function Projects() {
             style={{
               fontSize: '0.9375rem',
               lineHeight: 1.65,
-              color: '#BDBDBD',
+              color: 'var(--text-secondary)',
               maxWidth: '40rem',
               marginLeft: 'auto',
               marginRight: 'auto',

@@ -67,19 +67,19 @@ export function Modal({ isOpen, onClose, children, maxWidth = '800px' }: ModalPr
                 width: '2rem',
                 height: '2rem',
                 borderRadius: '9999px',
-                background: '#232323',
-                border: '1px solid #2A2A2A',
-                color: '#888888',
+                background: 'var(--bg-hover)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-muted)',
                 cursor: 'pointer',
                 transition: 'all 200ms',
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.color = '#FFFFFF';
-                (e.currentTarget as HTMLButtonElement).style.background = '#2A2A2A';
+                (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-primary)';
+                (e.currentTarget as HTMLButtonElement).style.background = 'var(--border)';
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.color = '#888888';
-                (e.currentTarget as HTMLButtonElement).style.background = '#232323';
+                (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-muted)';
+                (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-hover)';
               }}
             >
               <X size={14} />

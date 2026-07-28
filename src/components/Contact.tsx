@@ -60,7 +60,7 @@ export function Contact() {
     <section
       id="contact"
       style={{
-        backgroundColor: '#050505',
+        backgroundColor: 'var(--bg-primary)',
         paddingTop: '7rem',
         paddingBottom: '7rem',
         position: 'relative',
@@ -101,9 +101,9 @@ export function Contact() {
                         width: '2.5rem',
                         height: '2.5rem',
                         borderRadius: '9999px',
-                        backgroundColor: '#171717',
-                        border: '1px solid #2A2A2A',
-                        color: '#888888',
+                        backgroundColor: 'var(--bg-card)',
+                        border: '1px solid var(--border)',
+                        color: 'var(--text-muted)',
                         flexShrink: 0,
                       }}
                     >
@@ -113,7 +113,7 @@ export function Contact() {
                       <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
                         Email
                       </span>
-                      <span className="body-base" style={{ color: '#BDBDBD' }}>
+                      <span className="body-base" style={{ color: 'var(--text-secondary)' }}>
                         {PERSONAL_INFO.email}
                       </span>
                     </div>
@@ -128,9 +128,9 @@ export function Contact() {
                         width: '2.5rem',
                         height: '2.5rem',
                         borderRadius: '9999px',
-                        backgroundColor: '#171717',
-                        border: '1px solid #2A2A2A',
-                        color: '#888888',
+                        backgroundColor: 'var(--bg-card)',
+                        border: '1px solid var(--border)',
+                        color: 'var(--text-muted)',
                         flexShrink: 0,
                       }}
                     >
@@ -141,7 +141,7 @@ export function Contact() {
                       <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem' }}>
                         Location
                       </span>
-                      <span className="body-base" style={{ color: '#BDBDBD' }}>
+                      <span className="body-base" style={{ color: 'var(--text-secondary)' }}>
                         {PERSONAL_INFO.location}
                       </span>
                     </div>

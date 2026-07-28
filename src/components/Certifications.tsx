@@ -7,7 +7,7 @@ export function Certifications() {
   return (
     <section
       id="certifications"
-      style={{ backgroundColor: '#050505' }}
+      style={{ backgroundColor: 'var(--bg-primary)' }}
       className="section-padding"
       aria-label="Certifications section"
     >
@@ -40,14 +40,14 @@ export function Certifications() {
           style={{
             marginTop: '4rem',
             padding: '2rem',
-            background: '#0D0D0D',
-            border: '1px solid #1E1E1E',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
             borderRadius: '1rem',
             textAlign: 'center',
           }}
         >
           <p className="label-xs" style={{ marginBottom: '0.5rem' }}>Always Learning</p>
-          <p className="body-base" style={{ color: '#666666', maxWidth: '38rem', margin: '0 auto' }}>
+          <p className="body-base" style={{ color: 'var(--text-muted)', maxWidth: '38rem', margin: '0 auto' }}>
             Committed to staying current with the latest technologies and methodologies in computer science, data science, and artificial intelligence.
           </p>
         </div>

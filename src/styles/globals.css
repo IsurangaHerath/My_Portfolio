@@ -3,6 +3,78 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* === LIGHT CREAM PALETTE === */
+  --bg-primary: #F7F3EE;
+  --bg-secondary: #EFEAE4;
+  --bg-card: #FDFBFA;
+  --bg-hover: #E8E2DA;
+  --border: #E0D9D0;
+  --text-primary: #0A0A0A;
+  --text-secondary: #555555;
+  --text-muted: #999999;
+  --accent: #0A0A0A;
+
+  /* === SHADCN COMPATIBLE VARS === */
+  --background: #F7F3EE;
+  --foreground: #0A0A0A;
+  --card: #FDFBFA;
+  --card-foreground: #0A0A0A;
+  --popover: #FDFBFA;
+  --popover-foreground: #0A0A0A;
+  --primary: #0A0A0A;
+  --primary-foreground: #F7F3EE;
+  --secondary: #E8E2DA;
+  --secondary-foreground: #0A0A0A;
+  --muted: #EFEAE4;
+  --muted-foreground: #999999;
+  --accent-bg: #E8E2DA;
+  --accent-foreground: #0A0A0A;
+  --destructive: #ef4444;
+  --destructive-foreground: #F7F3EE;
+  --input: #E0D9D0;
+  --input-background: #FDFBFA;
+  --ring: #CCCCCC;
+
+  /* === TYPOGRAPHY === */
+  --font-sans: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-size: 16px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* === SPACING & RADIUS === */
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.1);
+  --shadow-card: 0 0 0 1px #E0E0E0, 0 4px 16px rgba(0,0,0,0.04);
+
+  /* === TRANSITIONS === */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Sidebar vars (keep for shadcn compat) */
+  --sidebar: #FDFBFA;
+  --sidebar-foreground: #0A0A0A;
+  --sidebar-primary: #0A0A0A;
+  --sidebar-primary-foreground: #F7F3EE;
+  --sidebar-accent: #E8E2DA;
+  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-border: #E0D9D0;
+  --sidebar-ring: #CCCCCC;
+}
+
+.dark {
   /* === DARK MONOCHROMATIC PALETTE === */
   --bg-primary: #050505;
   --bg-secondary: #111111;
@@ -35,22 +107,6 @@
   --input-background: #111111;
   --ring: #3A3A3A;
 
-  /* === TYPOGRAPHY === */
-  --font-sans: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-size: 16px;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-
-  /* === SPACING & RADIUS === */
-  --radius: 0.75rem;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-full: 9999px;
-
   /* === SHADOWS === */
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.8);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.6);
@@ -58,12 +114,7 @@
   --shadow-xl: 0 16px 48px rgba(0,0,0,0.8);
   --shadow-card: 0 0 0 1px #2A2A2A, 0 4px 16px rgba(0,0,0,0.5);
 
-  /* === TRANSITIONS === */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Sidebar vars (keep for shadcn compat) */
+  /* Sidebar vars */
   --sidebar: #111111;
   --sidebar-foreground: #FFFFFF;
   --sidebar-primary: #F5F5F5;
@@ -127,11 +178,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 300ms ease, color 300ms ease;
   }
 
   ::selection {
     background-color: rgba(245, 245, 245, 0.15);
-    color: #FFFFFF;
+    color: var(--text-primary);
   }
 
   ::-webkit-scrollbar {
@@ -148,7 +200,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #3A3A3A;
+    background: var(--bg-hover);
   }
 }
 

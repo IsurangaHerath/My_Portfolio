@@ -14,7 +14,7 @@ export function Education() {
   return (
     <section
       id="education"
-      style={{ backgroundColor: '#080808' }}
+      style={{ backgroundColor: 'var(--bg-primary)' }}
       className="section-padding"
       aria-label="Education section"
     >
@@ -36,7 +36,7 @@ export function Education() {
                 top: '2.5rem',
                 bottom: '2.5rem',
                 width: '1px',
-                backgroundColor: '#1E1E1E',
+                backgroundColor: 'var(--border)',
               }}
             />
 
@@ -60,8 +60,8 @@ export function Education() {
                           width: '3.25rem',
                           height: '3.25rem',
                           borderRadius: '50%',
-                          background: index === 0 ? '#161616' : '#111111',
-                          border: `1px solid ${index === 0 ? '#2A2A2A' : '#1E1E1E'}`,
+                          background: index === 0 ? 'var(--bg-card)' : 'var(--bg-secondary)',
+                          border: `1px solid ${index === 0 ? 'var(--border)' : 'var(--border)'}`,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -69,7 +69,7 @@ export function Education() {
                       >
                         <Icon
                           size={18}
-                          color={index === 0 ? '#BDBDBD' : '#555555'}
+                          color={index === 0 ? 'var(--text-secondary)' : 'var(--text-muted)'}
                         />
                       </div>
                     </div>
@@ -85,7 +85,7 @@ export function Education() {
                     >
                       {/* Header */}
                       <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.25rem' }}>
-                        <span className="label-xs" style={{ color: index === 0 ? '#888888' : '#555555' }}>
+                        <span className="label-xs" style={{ color: index === 0 ? 'var(--text-muted)' : 'var(--text-muted)' }}>
                           {config.label}
                         </span>
                         <span
@@ -94,7 +94,7 @@ export function Education() {
                             alignItems: 'center',
                             gap: '0.25rem',
                             fontSize: '0.6875rem',
-                            color: edu.status === 'Completed' ? '#4ade80' : '#888888',
+                            color: edu.status === 'Completed' ? '#4ade80' : 'var(--text-muted)',
                             fontWeight: 500,
                           }}
                         >
@@ -107,7 +107,7 @@ export function Education() {
                         style={{
                           fontSize: '1.0625rem',
                           fontWeight: 700,
-                          color: '#FFFFFF',
+                          color: 'var(--text-primary)',
                           letterSpacing: '-0.01em',
                           marginBottom: '0.25rem',
                         }}
@@ -129,7 +129,7 @@ export function Education() {
                             alignItems: 'center',
                             gap: '0.25rem',
                             fontSize: '0.8125rem',
-                            color: '#888888',
+                            color: 'var(--text-muted)',
                           }}
                         >
                           <MapPin size={12} />
@@ -141,7 +141,7 @@ export function Education() {
                             alignItems: 'center',
                             gap: '0.25rem',
                             fontSize: '0.8125rem',
-                            color: '#666666',
+                            color: 'var(--text-muted)',
                           }}
                         >
                           <Calendar size={12} />
@@ -156,7 +156,7 @@ export function Education() {
                       )}
 
                       {edu.description && (
-                        <p className="body-sm" style={{ marginBottom: '1rem', color: '#666666' }}>
+                        <p className="body-sm" style={{ marginBottom: '1rem', color: 'var(--text-muted)' }}>
                           {edu.description}
                         </p>
                       )}
@@ -169,12 +169,12 @@ export function Education() {
                             alignItems: 'center',
                             gap: '0.375rem',
                             padding: '0.25rem 0.75rem',
-                            background: '#111111',
-                            border: '1px solid #2A2A2A',
+                            background: 'var(--bg-secondary)',
+                            border: '1px solid var(--border)',
                             borderRadius: '9999px',
                             fontSize: '0.75rem',
                             fontWeight: 500,
-                            color: '#BDBDBD',
+                            color: 'var(--text-secondary)',
                             marginBottom: '1rem',
                           }}
                         >
@@ -185,7 +185,7 @@ export function Education() {
                       {/* Highlights */}
                       {edu.highlights.length > 0 && (
                         <div>
-                          <p className="label-xs" style={{ marginBottom: '0.625rem', color: '#555555' }}>
+                            <p className="label-xs" style={{ marginBottom: '0.625rem', color: 'var(--text-muted)' }}>
                             {edu.type === 'university' ? 'Relevant Coursework' : 'Details'}
                           </p>
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
@@ -209,10 +209,10 @@ export function Education() {
                                 alignItems: 'flex-start',
                                 gap: '0.5rem',
                                 fontSize: '0.8125rem',
-                                color: '#666666',
+                                color: 'var(--text-muted)',
                               }}
                             >
-                              <span style={{ color: '#3A3A3A', flexShrink: 0, marginTop: '2px' }}>—</span>
+                              <span style={{ color: 'var(--text-muted)', flexShrink: 0, marginTop: '2px' }}>—</span>
                               {ach}
                             </div>
                           ))}

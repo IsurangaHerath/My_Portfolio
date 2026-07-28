@@ -17,7 +17,7 @@ export function ScrollProgress() {
         left: 0,
         right: 0,
         height: '2px',
-        background: 'rgba(245, 245, 245, 0.6)',
+        background: 'color-mix(in srgb, var(--accent) 60%, transparent)',
         transformOrigin: '0%',
         zIndex: 9999,
       }}

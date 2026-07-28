@@ -33,8 +33,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           borderRadius: '0.75rem',
           overflow: 'hidden',
           marginBottom: '1.5rem',
-          background: '#111111',
-          border: '1px solid #2A2A2A',
+          background: 'var(--bg-secondary)',
+          border: '1px solid var(--border)',
           position: 'relative',
         }}
       >
@@ -65,13 +65,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 width: '2.5rem',
                 height: '2.5rem',
                 borderRadius: '50%',
-                background: 'rgba(0, 0, 0, 0.7)',
+                background: 'color-mix(in srgb, var(--bg-primary) 70%, transparent)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                color: '#FFFFFF',
+                color: 'var(--text-primary)',
               }}
             >
               <ChevronLeft size={20} />
@@ -89,13 +89,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 width: '2.5rem',
                 height: '2.5rem',
                 borderRadius: '50%',
-                background: 'rgba(0, 0, 0, 0.7)',
+                background: 'color-mix(in srgb, var(--bg-primary) 70%, transparent)',
                 border: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                color: '#FFFFFF',
+                color: 'var(--text-primary)',
               }}
             >
               <ChevronRight size={20} />
@@ -122,7 +122,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     height: '0.5rem',
                     borderRadius: '50%',
                     border: 'none',
-                    background: i === currentImageIndex ? '#FFFFFF' : 'rgba(255, 255, 255, 0.4)',
+                    background: i === currentImageIndex ? 'var(--text-primary)' : 'color-mix(in srgb, var(--text-primary) 40%, transparent)',
                     cursor: 'pointer',
                     padding: 0,
                   }}
@@ -157,14 +157,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           style={{
             fontSize: '1.5rem',
             fontWeight: 700,
-            color: '#FFFFFF',
+            color: 'var(--text-primary)',
             letterSpacing: '-0.02em',
             marginBottom: '0.5rem',
           }}
         >
           {project.title}
         </h2>
-        <p className="body-base" style={{ color: '#888888' }}>{project.description}</p>
+        <p className="body-base" style={{ color: 'var(--text-muted)' }}>{project.description}</p>
       </div>
 
       {/* Navigation tabs */}
@@ -172,7 +172,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         style={{
           display: 'flex',
           gap: '0.5rem',
-          borderBottom: '1px solid #2A2A2A',
+          borderBottom: '1px solid var(--border)',
           marginBottom: '1.5rem',
           paddingBottom: '0.5rem',
         }}
@@ -186,8 +186,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               padding: '0.375rem 0.875rem',
               fontSize: '0.8125rem',
               textTransform: 'capitalize',
-              color: activeTab === tab ? '#FFFFFF' : '#888888',
-              borderBottom: activeTab === tab ? '2px solid #FFFFFF' : '2px solid transparent',
+              color: activeTab === tab ? 'var(--text-primary)' : 'var(--text-muted)',
+              borderBottom: activeTab === tab ? '2px solid var(--accent)' : '2px solid transparent',
               borderRadius: 0,
             }}
           >
@@ -206,7 +206,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               {project.features.map((feature, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
                   <CheckCircle2 size={14} color="#4ade80" style={{ flexShrink: 0, marginTop: '2px' }} />
-                  <span className="body-sm" style={{ color: '#BDBDBD' }}>{feature}</span>
+                  <span className="body-sm" style={{ color: 'var(--text-secondary)' }}>{feature}</span>
                 </div>
               ))}
             </div>
@@ -229,21 +229,21 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {project.architecture ? (
             <div>
               <h4 className="label-xs" style={{ marginBottom: '0.5rem' }}>System Architecture</h4>
-              <p className="body-sm" style={{ color: '#BDBDBD', lineHeight: 1.7 }}>{project.architecture}</p>
+              <p className="body-sm" style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>{project.architecture}</p>
             </div>
           ) : (
-            <p className="body-sm" style={{ color: '#666666' }}>Standard full-stack web application structure.</p>
+            <p className="body-sm" style={{ color: 'var(--text-muted)' }}>Standard full-stack web application structure.</p>
           )}
 
           <div>
             <h4 className="label-xs" style={{ marginBottom: '0.75rem' }}>Challenges & Solutions</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {project.challenges.map((challenge, i) => (
-                <div key={i} style={{ background: '#171717', border: '1px solid #2A2A2A', padding: '0.875rem', borderRadius: '0.5rem' }}>
-                  <div style={{ color: '#E5E5E5', fontSize: '0.8125rem', fontWeight: 600, marginBottom: '0.25rem' }}>
+                <div key={i} style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', padding: '0.875rem', borderRadius: '0.5rem' }}>
+                  <div style={{ color: 'var(--text-primary)', fontSize: '0.8125rem', fontWeight: 600, marginBottom: '0.25rem' }}>
                     Challenge: {challenge}
                   </div>
-                  <div style={{ color: '#888888', fontSize: '0.8125rem' }}>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.8125rem' }}>
                     Solution: {project.solutions[i] || 'Optimized code implementation and robust error handling.'}
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <h4 className="label-xs" style={{ marginBottom: '0.75rem' }}>Lessons Learned</h4>
             <ul style={{ paddingLeft: '1.25rem', margin: 0 }}>
               {project.lessonsLearned.map((lesson, i) => (
-                <li key={i} className="body-sm" style={{ color: '#BDBDBD', marginBottom: '0.375rem' }}>{lesson}</li>
+                <li key={i} className="body-sm" style={{ color: 'var(--text-secondary)', marginBottom: '0.375rem' }}>{lesson}</li>
               ))}
             </ul>
           </div>
@@ -268,7 +268,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <h4 className="label-xs" style={{ marginBottom: '0.75rem' }}>Future Roadmap</h4>
             <ul style={{ paddingLeft: '1.25rem', margin: 0 }}>
               {project.futureImprovements.map((imp, i) => (
-                <li key={i} className="body-sm" style={{ color: '#888888', marginBottom: '0.375rem' }}>{imp}</li>
+                <li key={i} className="body-sm" style={{ color: 'var(--text-muted)', marginBottom: '0.375rem' }}>{imp}</li>
               ))}
             </ul>
           </div>
@@ -276,7 +276,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       )}
 
       {/* Action buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #2A2A2A' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border)' }}>
         {project.github && (
           <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ flex: 1 }}>
             <Github size={16} /> Source Code
@@ -301,7 +301,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'rgba(0,0,0,0.75)',
+        background: 'color-mix(in srgb, var(--bg-primary) 75%, transparent)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         display: 'flex',

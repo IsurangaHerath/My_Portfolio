@@ -21,10 +21,10 @@ function ProjectThumbnail({ project }: { project: Project }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
+          background: 'linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%)',
         }}
       >
-        <span style={{ fontSize: '0.75rem', color: '#555555', fontWeight: 600, letterSpacing: '0.05em' }}>
+        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, letterSpacing: '0.05em' }}>
           {(project.category || '').toUpperCase()}
         </span>
       </div>
@@ -48,8 +48,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const cardBorder = isHovered ? '1px solid #3A3A3A' : '1px solid #2A2A2A';
-  const cardShadow = isHovered ? '0 8px 32px rgba(0,0,0,0.5)' : '0 4px 16px rgba(0,0,0,0.3)';
+  const cardBorder = isHovered ? '1px solid var(--bg-hover)' : '1px solid var(--border)';
+  const cardShadow = isHovered ? 'var(--shadow-lg)' : 'var(--shadow-md)';
 
   return (
     <>
@@ -77,8 +77,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    background: 'linear-gradient(135deg, rgb(26, 26, 26)100%)',
-    borderBottom: '1px solid #2A2A2A',
+    background: 'linear-gradient(135deg, var(--bg-secondary)100%)',
+    borderBottom: '1px solid var(--border)',
     padding: '2rem',
     textAlign: 'center',
   }}
@@ -86,7 +86,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   <h2
     style={{
       fontSize: '1rem',
-      color: '#FFFFFF',
+      color: 'var(--text-primary)',
       marginBottom: '0.5rem',
       letterSpacing: '-0.03em',
     }}
@@ -113,8 +113,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Role & Duration */}
           <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-            <span className="body-sm" style={{ color: '#888888' }}>{project.role}</span>
-            <span className="body-sm" style={{ color: '#666666' }}>{project.duration}</span>
+            <span className="body-sm" style={{ color: 'var(--text-muted)' }}>{project.role}</span>
+            <span className="body-sm" style={{ color: 'var(--text-muted)' }}>{project.duration}</span>
           </div>
 
           {/* Tech Badges */}
@@ -125,14 +125,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </span>
             ))}
             {project.technologies.length > 4 && (
-              <span className="badge" style={{ fontSize: '0.6875rem', color: '#555555' }}>
+              <span className="badge" style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>
                 +{project.technologies.length - 4}
               </span>
             )}
           </div>
 
           {/* Footer actions */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #222222' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid var(--border)' }}>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               {project.github && (
                 <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.2 }}>

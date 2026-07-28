@@ -32,9 +32,9 @@ export function BackToTop() {
             width: '3rem',
             height: '3rem',
             borderRadius: '9999px',
-            background: '#171717',
-            border: '1px solid #2A2A2A',
-            color: '#888888',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border)',
+            color: 'var(--text-muted)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -42,7 +42,7 @@ export function BackToTop() {
             zIndex: 50,
             transition: 'all 200ms',
           }}
-          whileHover={{ scale: 1.1, borderColor: '#3A3A3A', color: '#FFFFFF' }}
+          whileHover={{ scale: 1.1, borderColor: 'var(--accent)', color: 'var(--text-primary)' }}
           whileTap={{ scale: 0.95 }}
         >
           <ArrowUp size={18} />

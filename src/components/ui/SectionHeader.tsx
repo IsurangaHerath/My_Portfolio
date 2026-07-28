@@ -30,7 +30,7 @@ export function SectionHeader({
           style={{
             maxWidth: '42rem',
             marginTop: '0.5rem',
-            color: '#888888',
+            color: 'var(--text-muted)',
             ...(align === 'center' ? { textAlign: 'center' } : {}),
           }}
         >

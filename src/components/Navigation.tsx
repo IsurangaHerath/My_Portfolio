@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useScrollVisibility } from '../hooks/useScrollVisibility';
+import { ThemeToggle } from './ui/ThemeToggle';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -52,10 +53,10 @@ export function Navigation() {
         left: 0,
         right: 0,
         zIndex: 100,
-        backgroundColor: isScrolled ? 'rgba(5, 5, 5, 0.85)' : 'transparent',
+        backgroundColor: isScrolled ? 'color-mix(in srgb, var(--bg-primary) 85%, transparent)' : 'transparent',
         backdropFilter: isScrolled ? 'blur(16px)' : 'none',
         WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(42, 42, 42, 0.8)' : '1px solid transparent',
+        borderBottom: isScrolled ? '1px solid var(--border)' : '1px solid transparent',
         transition: 'background-color 300ms, border-color 300ms, backdrop-filter 300ms',
       }}
       role="navigation"
@@ -77,20 +78,20 @@ export function Navigation() {
             style={{
               fontSize: '1rem',
               fontWeight: 700,
-              color: '#FFFFFF',
+              color: 'var(--text-primary)',
               textDecoration: 'none',
               letterSpacing: '-0.02em',
               flexShrink: 0,
               textAlign: 'center'
             }}
           >
-            Isuranga <br /> Herath<span style={{ color: '#444444' }}>.</span>
+            Isuranga <br /> Herath<span style={{ color: 'var(--text-muted)' }}>.</span>
           </a>
 
           {/* Spacer pushes everything else to the right */}
           <div style={{ flex: 1 }} />
 
-          {/* Nav links + Contact CTA on the RIGHT side */}
+          {/* Nav links + ThemeToggle on the RIGHT side */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="desktop-nav">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
@@ -102,9 +103,9 @@ export function Navigation() {
                   className={`nav-link-item ${isActive ? 'active' : ''}`}
                   style={{
                     padding: '0.375rem 0.875rem',
-                    color: isActive ? '#FFFFFF' : '#888888',
+                    color: isActive ? 'var(--text-primary)' : 'var(--text-muted)',
                     textDecoration: 'none',
-                    borderBottom: isActive ? '2px solid #F5F5F5' : '2px solid transparent',
+                    borderBottom: isActive ? '2px solid var(--accent)' : '2px solid transparent',
                     borderRadius: '0.375rem 0.375rem 0 0',
                     transition: 'color 200ms, border-color 200ms',
                   }}
@@ -114,14 +115,8 @@ export function Navigation() {
                 </a>
               );
             })}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleLinkClick('#contact'); }}
-              className="btn-secondary"
-              style={{ padding: '0.5rem 1.25rem', fontSize: '0.875rem' }}
-            >
-              Get in Touch
-            </a>
+            <div style={{ width: '0.75rem' }} />
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
@@ -149,7 +144,7 @@ export function Navigation() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.15 }}
                 >
-                  <X size={20} color="#FFFFFF" />
+                  <X size={20} color="var(--text-primary)" />
                 </motion.span>
               ) : (
                 <motion.span
@@ -159,7 +154,7 @@ export function Navigation() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.15 }}
                 >
-                  <Menu size={20} color="#888888" />
+                  <Menu size={20} color="var(--text-muted)" />
                 </motion.span>
               )}
             </AnimatePresence>
@@ -178,8 +173,8 @@ export function Navigation() {
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
             style={{
               overflow: 'hidden',
-              borderTop: '1px solid #2A2A2A',
-              background: 'rgba(5, 5, 5, 0.95)',
+              borderTop: '1px solid var(--border)',
+              background: 'color-mix(in srgb, var(--bg-primary) 95%, transparent)',
               backdropFilter: 'blur(16px)',
             }}
           >
@@ -198,9 +193,9 @@ export function Navigation() {
                       padding: '0.75rem 0',
                       fontSize: '0.9375rem',
                       fontWeight: isActive ? 600 : 500,
-                      color: isActive ? '#FFFFFF' : '#888888',
+                      color: isActive ? 'var(--text-primary)' : 'var(--text-muted)',
                       textDecoration: 'none',
-                      borderBottom: '1px solid #1A1A1A',
+                      borderBottom: '1px solid var(--bg-secondary)',
                       display: 'block',
                       transition: 'color 200ms',
                     }}

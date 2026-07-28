@@ -22,13 +22,13 @@ function CertThumbnail({ cert }: { cert: Certificate }) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
+          background: 'linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%)',
           gap: '0.5rem',
           paddingRight: '10rem'
         }}
       >
-        <Award size={28} color="#333333" />
-        <span style={{ fontSize: '0.6875rem', color: '#444444', fontWeight: 600, letterSpacing: '0.05em' }}>
+        <Award size={28} color="var(--text-muted)" />
+        <span style={{ fontSize: '0.6875rem', color: 'var(--text-muted)', fontWeight: 600, letterSpacing: '0.05em' }}>
           {(cert.category || '').toUpperCase()}
         </span>
       </div>
@@ -56,12 +56,12 @@ function CertificateCardThumbnail({ cert }: { cert: Certificate }) {
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        background: 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
+        background: 'linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%)',
       }}
     >
       <h2
         style={{
-          color: '#FFFFFF',
+          color: 'var(--text-primary)',
           fontSize: '1rem',
           fontWeight: 700,
         }}
@@ -87,8 +87,8 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
           borderRadius: '0.75rem',
           overflow: 'hidden',
           marginBottom: '1.5rem',
-          background: '#111111',
-          border: '1px solid #2A2A2A',
+          background: 'var(--bg-secondary)',
+          border: '1px solid var(--border)',
         }}
       >
         <CertThumbnail cert={cert} />
@@ -103,14 +103,14 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
           style={{
             fontSize: '1.375rem',
             fontWeight: 700,
-            color: '#FFFFFF',
+            color: 'var(--text-primary)',
             letterSpacing: '-0.02em',
             marginBottom: '0.25rem',
           }}
         >
           {cert.title}
         </h2>
-        <p className="body-sm" style={{ color: '#888888' }}>{cert.institute}</p>
+        <p className="body-sm" style={{ color: 'var(--text-muted)' }}>{cert.institute}</p>
       </div>
 
       {/* Meta info */}
@@ -122,18 +122,18 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
           marginBottom: '1.5rem',
         }}
       >
-        <div style={{ background: '#171717', border: '1px solid #2A2A2A', borderRadius: '0.75rem', padding: '1rem' }}>
+        <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '0.75rem', padding: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: '0.25rem' }}>
-            <Calendar size={12} color="#555555" />
+            <Calendar size={12} color="var(--text-muted)" />
             <span className="label-xs">Issue Date</span>
           </div>
-          <p style={{ fontSize: '0.875rem', color: '#BDBDBD', fontWeight: 500 }}>{cert.completionDate}</p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', fontWeight: 500 }}>{cert.completionDate}</p>
         </div>
-        <div style={{ background: '#171717', border: '1px solid #2A2A2A', borderRadius: '0.75rem', padding: '1rem' }}>
+        <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '0.75rem', padding: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: '0.25rem' }}>
             <span className="label-xs">Credential ID</span>
           </div>
-          <p style={{ fontSize: '0.875rem', color: '#BDBDBD', fontWeight: 500, fontFamily: 'monospace' }}>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', fontWeight: 500, fontFamily: 'monospace' }}>
             {cert.credentialId}
           </p>
         </div>
@@ -142,7 +142,7 @@ function CertificateModal({ cert, onClose }: { cert: Certificate; onClose: () =>
       {/* Description */}
       <div style={{ marginBottom: '1.5rem' }}>
         <p className="label-xs" style={{ marginBottom: '0.5rem' }}>Description</p>
-        <p className="body-base" style={{ color: '#888888' }}>{cert.description}</p>
+        <p className="body-base" style={{ color: 'var(--text-muted)' }}>{cert.description}</p>
       </div>
 
       {/* Skills */}
@@ -219,8 +219,8 @@ export function CertificateCard({ cert }: CertificateCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const cardBorder = isHovered ? '1px solid #3A3A3A' : '1px solid rgba(255, 255, 255, 0.06)';
-  const cardShadow = isHovered ? '0 8px 32px rgba(0,0,0,0.5)' : '0 4px 16px rgba(0,0,0,0.3)';
+  const cardBorder = isHovered ? '1px solid var(--bg-hover)' : '1px solid var(--border)';
+  const cardShadow = isHovered ? 'var(--shadow-lg)' : 'var(--shadow-md)';
 
   return (
     <>
@@ -278,15 +278,15 @@ export function CertificateCard({ cert }: CertificateCardProps) {
               </span>
             ))}
             {cert.skills.length > 3 && (
-              <span className="badge" style={{ fontSize: '0.6875rem', color: '#555555' }}>
+              <span className="badge" style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>
                 +{cert.skills.length - 3}
               </span>
             )}
           </div>
 
           {/* Footer actions */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #222222' }}>
-            <span className="body-sm" style={{ color: '#555555', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid var(--border)' }}>
+            <span className="body-sm" style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
               <ExternalLink size={12} />
               View details
             </span>

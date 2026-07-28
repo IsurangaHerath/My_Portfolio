@@ -41,7 +41,7 @@ export function About() {
   return (
     <section
       id="about"
-      style={{ backgroundColor: '#050505' }}
+      style={{ backgroundColor: 'var(--bg-primary)' }}
       className="section-padding"
       aria-label="About section"
     >
@@ -54,16 +54,16 @@ export function About() {
 
         {/* Stats - ONE large analytics container with 4 horizontal sections */}
         <StaggerContainer className="stats-grid" style={{
-          background: '#1A1A1A',
+          background: 'var(--bg-secondary)',
           borderRadius: '1rem',
           overflow: 'hidden',
-          border: '1px solid #1E1E1E',
+          border: '1px solid var(--border)',
         }} staggerDelay={0.1}>
           {STATS.map((stat) => (
             <StaggerItem key={stat.label}>
               <motion.div
                 className="stat-item"
-                whileHover={{ backgroundColor: '#111111' }}
+                whileHover={{ backgroundColor: 'var(--bg-hover)' }}
                 transition={{ duration: 0.2 }}
                 style={{ cursor: 'default' }}
               >
@@ -71,12 +71,12 @@ export function About() {
                   width: '3rem',
                   height: '3rem',
                   borderRadius: '9999px',
-                  background: '#111111',
-                  border: '1px solid #2A2A2A',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#888888',
+                  color: 'var(--text-muted)',
                   flexShrink: 0,
                 }}>
                   {statIcons[stat.label]}
@@ -85,7 +85,7 @@ export function About() {
                   <div style={{
                     fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                     fontWeight: 800,
-                    color: '#FFFFFF',
+                    color: 'var(--text-primary)',
                     letterSpacing: '-0.03em',
                     lineHeight: 1,
                   }}>
@@ -93,7 +93,7 @@ export function About() {
                   </div>
                   <div style={{
                     fontSize: '0.875rem',
-                    color: '#888888',
+                    color: 'var(--text-muted)',
                     marginTop: '0.375rem',
                   }}>
                     {stat.label}
@@ -115,11 +115,11 @@ export function About() {
             display: flex !important;
             align-items: center;
             gap: 1rem;
-            background: #0D0D0D;
+            background: var(--bg-secondary);
             transition: background-color 200ms;
           }
           .stats-grid .stat-item:hover {
-            background-color: #111111;
+            background-color: var(--bg-hover);
           }
           @media (min-width: 640px) {
             .stats-grid {
@@ -149,7 +149,7 @@ export function About() {
                 style={{
                   fontSize: '1.25rem',
                   fontWeight: 700,
-                  color: '#FFFFFF',
+                  color: 'var(--text-primary)',
                   letterSpacing: '-0.02em',
                   marginBottom: '1.5rem',
                 }}
@@ -180,21 +180,21 @@ export function About() {
                         width: '2.25rem',
                         height: '2.25rem',
                         borderRadius: '0.5rem',
-                        background: '#1A1A1A',
-                        border: '1px solid #2A2A2A',
+                        background: 'var(--bg-secondary)',
+                        border: '1px solid var(--border)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '0.875rem',
                       }}
                     >
-                      <Icon size={16} color="#888888" />
+                      <Icon size={16} color="var(--text-muted)" />
                     </div>
                     <h4
                       style={{
                         fontSize: '0.875rem',
                         fontWeight: 600,
-                        color: '#FFFFFF',
+                        color: 'var(--text-primary)',
                         marginBottom: '0.375rem',
                         letterSpacing: '-0.01em',
                       }}
@@ -213,7 +213,7 @@ export function About() {
         <AnimatedSection>
           <div
             style={{
-              borderTop: '1px solid #1A1A1A',
+              borderTop: '1px solid var(--bg-secondary)',
               paddingTop: '3rem',
             }}
           >

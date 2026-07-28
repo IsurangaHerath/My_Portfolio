@@ -38,7 +38,7 @@ export function Hero() {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        backgroundColor: '#050505',
+        backgroundColor: 'var(--bg-primary)',
         paddingTop: '5rem',
       }}
       aria-label="Hero section"
@@ -164,8 +164,8 @@ export function Hero() {
                     width: '100%',
                     height: '100%',
                     borderRadius: '50%',
-                    background: '#111111',
-                    color: '#555555',
+                    background: 'var(--bg-secondary)',
+                    color: 'var(--text-muted)',
                     fontSize: '2.5rem',
                     fontWeight: 700,
                     display: 'flex',
@@ -188,7 +188,7 @@ export function Hero() {
                 height: '14px',
                 borderRadius: '50%',
                 backgroundColor: '#4ade80',
-                border: '2px solid #050505',
+                border: '2px solid var(--bg-primary)',
                 zIndex: 2,
               }}
               aria-hidden="true"
@@ -208,7 +208,7 @@ export function Hero() {
                 borderRadius: '9999px',
                 fontSize: '0.75rem',
                 fontWeight: 500,
-                color: '#888888',
+                color: 'var(--text-muted)',
                 letterSpacing: '0.05em',
               }}
             >
@@ -227,7 +227,7 @@ export function Hero() {
           </motion.div>
 
           {/* Name */}
-          <motion.h1 variants={itemVariants} className="display-xl" style={{ marginBottom: '1rem', color: '#FFFFFF' }}>
+          <motion.h1 variants={itemVariants} className="display-xl" style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>
             {PERSONAL_INFO.name}
           </motion.h1>
 
@@ -238,7 +238,7 @@ export function Hero() {
               marginBottom: '1.5rem',
               fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
               fontWeight: 500,
-              color: '#888888',
+              color: 'var(--text-muted)',
               letterSpacing: '-0.01em',
               minHeight: '2rem',
               display: 'flex',
@@ -246,7 +246,7 @@ export function Hero() {
               justifyContent: 'center',
             }}
           >
-            <span style={{ color: '#BDBDBD' }}>{typedText}</span>
+            <span style={{ color: 'var(--text-secondary)' }}>{typedText}</span>
             <span className="typing-cursor" aria-hidden="true" />
           </motion.div>
 
@@ -254,7 +254,7 @@ export function Hero() {
           <motion.p
             variants={itemVariants}
             className="body-lg"
-            style={{ maxWidth: '36rem', marginBottom: '2.5rem', color: '#666666' }}
+            style={{ maxWidth: '36rem', marginBottom: '2.5rem', color: 'var(--text-muted)' }}
           >
             Undergraduate at University of Vavuniya, specializing in Computer Science with a focus on Data Science and AI.
           </motion.p>
@@ -337,8 +337,8 @@ export function Hero() {
         }}
         aria-hidden="true"
       >
-        <span className="label-xs" style={{ color: '#444444' }}>Scroll</span>
-        <ArrowDown size={16} color="#444444" className="scroll-indicator" />
+          <span className="label-xs" style={{ color: 'var(--text-muted)' }}>Scroll</span>
+          <ArrowDown size={16} color="var(--text-muted)" className="scroll-indicator" />
       </motion.div>
 
       <style>{`
