@@ -30,16 +30,13 @@ export async function sendContactForm(data: ContactFormData) {
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-  if (!serviceId || !templateId || !publicKey) {
-    return;
+  if (serviceId && templateId && publicKey) {
+    const templateParams = {
+      from_name: data.name,
+      from_email: data.email,
+      subject: data.subject,
+      message: data.message,
+    };
+    await send(serviceId, templateId, templateParams, publicKey);
   }
-
-  const templateParams = {
-    from_name: data.name,
-    from_email: data.email,
-    subject: data.subject,
-    message: data.message,
-  };
-
-  await send(serviceId, templateId, templateParams, publicKey);
 }

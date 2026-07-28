@@ -39,14 +39,15 @@ export function Contact() {
     setIsSubmitting(true);
     try {
       await sendContactForm(formData);
-      setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');
       setSubmitStatus('error');
-      setErrorMessage(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
-    } finally {
       setIsSubmitting(false);
+      return;
     }
+    setIsSubmitting(false);
+    setSubmitStatus('success');
   };
 
   const handleChange = (
