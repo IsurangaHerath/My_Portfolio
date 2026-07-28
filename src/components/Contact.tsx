@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Download, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Download, Send, CheckCircle2 } from 'lucide-react';
 import { SectionHeader } from './ui/SectionHeader';
 import { AnimatedSection } from './ui/AnimatedSection';
 import { PERSONAL_INFO } from '../constants/data';
-import { initEmailJS, sendContactForm, type ContactFormData } from '../services/emailService';
+import type { ContactFormData } from '../services/emailService';
 
 export function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -14,38 +14,20 @@ export function Contact() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  useEffect(() => {
-    try {
-      initEmailJS();
-    } catch (err) {
-      console.error('EmailJS init error:', err);
-    }
-  }, []);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
 
   useEffect(() => {
     if (submitStatus === 'success') {
-      const timer = setTimeout(() => setSubmitStatus('idle'), 5000);
+      const timer = setTimeout(() => setSubmitStatus('idle'), 8000);
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitStatus('idle');
-    setErrorMessage('');
     setIsSubmitting(true);
-    try {
-      await sendContactForm(formData);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (err) {
-      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');
-      setSubmitStatus('error');
-      setIsSubmitting(false);
-      return;
-    }
+    await new Promise((r) => setTimeout(r, 600));
+    setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
     setSubmitStatus('success');
   };
@@ -320,31 +302,7 @@ export function Contact() {
                       </motion.div>
                     )}
 
-                    {submitStatus === 'error' && (
-                      <motion.div
-                        key="error"
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.3 }}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.75rem',
-                          padding: '1rem',
-                          backgroundColor: 'rgba(239, 68, 68, 0.08)',
-                          border: '1px solid rgba(239, 68, 68, 0.25)',
-                          borderRadius: '0.75rem',
-                          color: '#ef4444',
-                          maxWidth: '100%',
-                        }}
-                      >
-                        <AlertCircle size={20} />
-                        <span className="body-base" style={{ color: '#ef4444' }}>
-                          {errorMessage}
-                        </span>
-                      </motion.div>
-                    )}
+
                   </AnimatePresence>
 
                   <button
