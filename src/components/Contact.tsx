@@ -309,11 +309,11 @@ export function Contact() {
                         <CheckCircle2 size={20} />
                         <div>
                         <span className="body-base" style={{ color: '#22c55e' }}>
-                          Message sent successfully (offline mode).
+                          Message sending is not working at the moment.
                         </span>
                         <br />
                         <span className="body-sm" style={{ color: '#22c55e', marginTop: '0.25rem', display: 'inline-block' }}>
-                          Contact me directly at <strong>{PERSONAL_INFO.phone}</strong> for urgent inquiries.
+                          Please contact <strong>{PERSONAL_INFO.name}</strong> directly at <strong>{PERSONAL_INFO.phone}</strong>
                         </span>
                       </div>
                       </motion.div>
