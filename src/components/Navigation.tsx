@@ -91,7 +91,7 @@ export function Navigation() {
           {/* Spacer pushes everything else to the right */}
           <div style={{ flex: 1 }} />
 
-          {/* Nav links + ThemeToggle on the RIGHT side */}
+          {/* Nav links on the RIGHT side (desktop only) */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="desktop-nav">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
@@ -115,50 +115,53 @@ export function Navigation() {
                 </a>
               );
             })}
-            <div style={{ width: '0.75rem' }} />
+            <div className="desktop-nav-sep" style={{ width: '0.75rem' }} />
             <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="mobile-menu-btn"
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '0.5rem',
-            }}
-          >
-            <AnimatePresence mode="wait">
-              {isMenuOpen ? (
-                <motion.span
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <X size={20} color="var(--text-primary)" />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Menu size={20} color="var(--text-muted)" />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
+          {/* Mobile right section: ThemeToggle + menu button */}
+          <div className="mobile-right" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="mobile-menu-btn"
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '0.5rem',
+              }}
+            >
+              <AnimatePresence mode="wait">
+                {isMenuOpen ? (
+                  <motion.span
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <X size={20} color="var(--text-primary)" />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <Menu size={20} color="var(--text-muted)" />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -212,18 +215,12 @@ export function Navigation() {
       <style>{`
         @media (min-width: 768px) {
           .mobile-menu-btn { display: none !important; }
+          .mobile-right { display: none !important; }
         }
         @media (max-width: 767px) {
           .desktop-nav { display: none !important; }
-          .mobile-menu-btn {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-          }
+          .desktop-nav-sep { display: none !important; }
+          .mobile-right { display: flex !important; }
         }
       `}</style>
     </motion.nav>
