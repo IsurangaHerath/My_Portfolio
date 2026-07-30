@@ -94,7 +94,7 @@ export const EDUCATION: EducationItem[] = [
     highlights: [
       'Data Science and Analytics',
       'Machine Learning and Artificial Intelligence',
-      'Python Programming' ,
+      'Python Programming',
       'Data Structures',
       'Database Management Systems',
       'Software Engineering',
@@ -325,7 +325,7 @@ export const PROJECTS: Project[] = [
     technologies: ['Node.js', 'Express', 'MySQL', 'React', 'Vite', 'Electron'],
     github: 'https://github.com/IsurangaHerath/POS_System',
     image: '/images/projects/pos-system.jpg',
-    images: [`${import.meta.env.BASE_URL}images/projects/pos_system/signup.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/login.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/dashboard.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/products.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/settings.png`,`${import.meta.env.BASE_URL}images/projects/pos_system/user.png`],
+    images: [`${import.meta.env.BASE_URL}images/projects/pos_system/signup.png`, `${import.meta.env.BASE_URL}images/projects/pos_system/login.png`, `${import.meta.env.BASE_URL}images/projects/pos_system/dashboard.png`, `${import.meta.env.BASE_URL}images/projects/pos_system/products.png`, `${import.meta.env.BASE_URL}images/projects/pos_system/settings.png`, `${import.meta.env.BASE_URL}images/projects/pos_system/user.png`],
     liveUrl: 'https://pos-system-1-aia1.onrender.com/',
     features: [
       'Inventory management with real-time stock tracking',
@@ -369,8 +369,8 @@ export const PROJECTS: Project[] = [
     technologies: ['React 18', 'Node.js', 'Express', 'JavaScript', 'SQLite'],
     github: 'https://github.com/IsurangaHerath/Task_Scheduler',
     image: '/images/projects/task-scheduler.jpg',
-    images: ['/images/projects/task-scheduler.jpg'],
-    liveUrl: '#',
+    images: [`${import.meta.env.BASE_URL}images/projects/task_scheduler/login.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/signup.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/dashboard.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/calender.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/users.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/a_dashboard.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/settings.png`],
+    liveUrl: 'https://task-scheduler-client.netlify.app/',
     features: [
       'Create, edit, and delete tasks with due dates',
       'Priority levels (High, Medium, Low)',
