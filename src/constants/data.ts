@@ -77,6 +77,7 @@ export interface EducationItem {
   description?: string;
   highlights: string[];
   achievements?: string[];
+  certifications?: { title: string; image?: string }[];
 }
 
 export const EDUCATION: EducationItem[] = [
@@ -102,6 +103,21 @@ export const EDUCATION: EducationItem[] = [
     ],
     achievements: [
       'Actively engaged in research-oriented coursework',
+    ],
+  },
+  {
+    id: 'diploma',
+    type: 'diploma',
+    institution: 'BIT Computer Institute (Pvt) Ltd.',
+    degree: 'Institute of Information Technology',
+    duration: '2021 – 2022',
+    status: 'Completed',
+    description: 'Completed a range of diploma courses covering essential computer applications and hardware skills.',
+    highlights: [],
+    certifications: [
+      { title: 'MS Office', image: `${import.meta.env.BASE_URL}images/certifications/python_for_beginners.PNG` },
+      { title: 'Computer Hardware', image: '' },
+      { title: 'Graphic Design', image: '' },
     ],
   },
   {
@@ -132,7 +148,7 @@ export const EDUCATION: EducationItem[] = [
     achievements: [
       'Achieved eligibility for Advanced Level studies',
     ],
-  },
+  }
 ];
 
 // ============================================================

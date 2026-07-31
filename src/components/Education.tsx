@@ -1,4 +1,5 @@
-import { GraduationCap, BookOpen, Award, MapPin, Calendar, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import { GraduationCap, BookOpen, Award, MapPin, Calendar, CheckCircle, BadgeCheck, ImageIcon } from 'lucide-react';
 import { SectionHeader } from './ui/SectionHeader';
 import { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
 import { EDUCATION } from '../constants/data';
@@ -11,6 +12,8 @@ const typeConfig = {
 };
 
 export function Education() {
+  const [viewImage, setViewImage] = useState<string | null>(null);
+
   return (
     <section
       id="education"
@@ -218,6 +221,56 @@ export function Education() {
                           ))}
                         </div>
                       )}
+
+                      {/* Diploma Certificates */}
+                      {edu.certifications && edu.certifications.length > 0 && (
+                        <div style={{ marginTop: '1rem' }}>
+                          <p className="label-xs" style={{ marginBottom: '0.625rem', color: 'var(--text-muted)' }}>
+                            Diploma Courses &amp; Certificates
+                          </p>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            {edu.certifications.map((cert) =>
+                              cert.image ? (
+                                <button
+                                  key={cert.title}
+                                  onClick={() => setViewImage(cert.image)}
+                                  style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    fontSize: '0.8125rem',
+                                    color: 'var(--accent)',
+                                    background: 'none',
+                                    border: 'none',
+                                    padding: 0,
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                    transition: 'color 200ms',
+                                  }}
+                                >
+                                  <BadgeCheck size={14} style={{ flexShrink: 0 }} />
+                                  <span style={{ flex: 1 }}>{cert.title}</span>
+                                  <ImageIcon size={13} style={{ flexShrink: 0, opacity: 0.7 }} />
+                                </button>
+                              ) : (
+                                <span
+                                  key={cert.title}
+                                  style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    fontSize: '0.8125rem',
+                                    color: 'var(--text-secondary)',
+                                  }}
+                                >
+                                  <BadgeCheck size={14} style={{ flexShrink: 0, color: 'var(--text-muted)' }} />
+                                  {cert.title}
+                                </span>
+                              )
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </StaggerItem>
@@ -226,6 +279,38 @@ export function Education() {
           </StaggerContainer>
         </div>
       </div>
+
+      {viewImage && (
+        <div
+          onClick={() => setViewImage(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.65)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 9999,
+            cursor: 'zoom-out',
+            padding: '2rem',
+          }}
+        >
+          <img
+            src={viewImage}
+            alt="Diploma certificate"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '95vw',
+              maxHeight: '95vh',
+              objectFit: 'contain',
+              borderRadius: '12px',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
+            }}
+          />
+        </div>
+      )}
     </section>
   );
 }
