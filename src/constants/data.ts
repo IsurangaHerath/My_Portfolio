@@ -106,21 +106,6 @@ export const EDUCATION: EducationItem[] = [
     ],
   },
   {
-    id: 'diploma',
-    type: 'diploma',
-    institution: 'BIT Computer Institute (Pvt) Ltd.',
-    degree: 'Institute of Information Technology',
-    duration: '2021 – 2022',
-    status: 'Completed',
-    description: 'Completed a range of diploma courses covering essential computer applications and hardware skills.',
-    highlights: [],
-    certifications: [
-      { title: 'MS Office', image: `${import.meta.env.BASE_URL}images/certifications/python_for_beginners.PNG` },
-      { title: 'Computer Hardware', image: '' },
-      { title: 'Graphic Design', image: '' },
-    ],
-  },
-  {
     id: 'alevel',
     type: 'alevel',
     institution: 'St. Joseph Vaz Collage, Wennappuwa',
@@ -147,6 +132,24 @@ export const EDUCATION: EducationItem[] = [
     ],
     achievements: [
       'Achieved eligibility for Advanced Level studies',
+    ],
+  },
+  {
+    id: 'diploma',
+    type: 'diploma',
+    institution: 'BIT Computer Institute (Pvt) Ltd.',
+    degree: 'Institute of Information Technology',
+    duration: '2013 – 2016',
+    status: 'Completed',
+    description: 'Completed a range of diploma courses covering essential computer applications and hardware skills.',
+    highlights: [],
+    certifications: [
+      { title: 'Microsoft Office', image: `${import.meta.env.BASE_URL}images/diploma/office.PNG` },
+      { title: 'Computer Hardware', image: `${import.meta.env.BASE_URL}images/diploma/hardware.PNG` },
+      { title: 'Web Design', image: `${import.meta.env.BASE_URL}images/diploma/web.PNG` },
+      { title: 'Video Editing and Multimedia', image: `${import.meta.env.BASE_URL}images/diploma/multimedia.PNG` },
+      { title: 'Office System', image: `${import.meta.env.BASE_URL}images/diploma/system.PNG` },
+      { title: 'Desktop Publishing', image: `${import.meta.env.BASE_URL}images/diploma/publishing.PNG` },
     ],
   }
 ];
@@ -221,6 +224,19 @@ export const CERTIFICATES: Certificate[] = [
     skills: ['Agentic AI Fundamentals', 'Large Language Models (LLMs)', 'Autonomous AI Systems', 'Human-AI Collaboration'],
     category: 'Artificial Intelligence',
     image: `${import.meta.env.BASE_URL}images/certifications/Understanding_agentic_aI.PNG`,
+  },
+  {
+    id: 'hardware',
+    title: 'Computer Hardware',
+    institute: 'Ministry of Science Technology and Research',
+    instituteShort: 'Physical',
+    completionDate: '2015',
+    credentialId: 'Certification',
+    verificationUrl: 'Certification',
+    description: 'This course has provided me with a solid understanding of computer hardware, including the basic principles of computer hardware and the basic principles of computer hardware.',
+    skills: ['Computer parts', 'Hardware Assembling', 'Troubleshooting', 'Software installation', 'System Installation'],
+    category: 'Hardware',
+    image: `${import.meta.env.BASE_URL}images/certifications/hardware.PNG`,
   },
   {
     id: 'agenticAI2',
