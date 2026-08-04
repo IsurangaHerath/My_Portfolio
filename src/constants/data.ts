@@ -11,7 +11,7 @@ export const PERSONAL_INFO = {
   github: 'https://github.com/IsurangaHerath',
   linkedin: 'https://www.linkedin.com/in/isuranga-herath-1765b72b9',
   profileImage: `${import.meta.env.BASE_URL}profile.jpg`,
-  cvUrl: '#', // Replace with actual CV URL when available
+  cvUrl: `${import.meta.env.BASE_URL}Isuranga CV.pdf`,
   bio: [
     "I'm a passionate Computer Science undergraduate at the University of Vavuniya, pursuing a special degree with a focus on Data Science and Machine Learning. My academic journey is driven by a deep interest in leveraging technology to solve real-world problems.",
     "Beyond my degree, I've expanded my expertise through diplomas in Computer Hardware and Graphic Design, along with multiple online certifications in cutting-edge technologies. I'm committed to continuous learning and staying updated with the latest developments in AI and data science.",

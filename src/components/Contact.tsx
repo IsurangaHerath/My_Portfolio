@@ -159,6 +159,7 @@ export function Contact() {
                   </div>
                   <a
                     href={PERSONAL_INFO.cvUrl}
+                    download="Isuranga Herath - CV.pdf"
                     className="btn-secondary"
                     style={{ display: 'inline-flex' }}
                   >
