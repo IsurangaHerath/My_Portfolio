@@ -413,7 +413,7 @@ export const PROJECTS: Project[] = [
     technologies: ['React 18', 'Node.js', 'Express', 'JavaScript', 'SQLite'],
     github: 'https://github.com/IsurangaHerath/Task_Scheduler',
     image: '/images/projects/task-scheduler.jpg',
-    images: [`${import.meta.env.BASE_URL}images/projects/task_scheduler/login.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/signup.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/dashboard.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/calender.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/users.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/a_dashboard.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/settings.png`],
+    images: [`${import.meta.env.BASE_URL}images/projects/task_scheduler/login.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/signup.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/dashboard.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/calender.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/users.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/a_dashboard.png`, `${import.meta.env.BASE_URL}images/projects/task_scheduler/settings.png`,`${import.meta.env.BASE_URL}images/projects/task_scheduler/mobile1.png`,`${import.meta.env.BASE_URL}images/projects/task_scheduler/mobile2.png`],
     liveUrl: 'https://task-scheduler-client.netlify.app/',
     features: [
       'Create, edit, and delete tasks with due dates',
