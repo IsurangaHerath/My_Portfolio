@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ChevronRight } from 'lucide-react';
+import { Github, ExternalLink, ChevronRight, CheckCircle } from 'lucide-react';
 import { Modal } from './ui/Modal';
 import type { Project } from '../constants/data';
 import { ProjectModal } from './ProjectModal';
@@ -100,7 +100,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
             <span className="badge-primary">{project.category}</span>
-            <span className="badge">{project.status}</span>
+            <span
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.25rem',
+                fontSize: '0.6875rem',
+                color: project.status === 'Completed' ? '#4ade80' : 'var(--text-muted)',
+                fontWeight: 500,
+              }}
+            >
+              <CheckCircle size={11} />
+              {project.status}
+            </span>
           </div>
 
           <h3 className="heading-card" style={{ marginBottom: '0.5rem' }}>
