@@ -106,7 +106,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 alignItems: 'center',
                 gap: '0.25rem',
                 fontSize: '0.6875rem',
-                color: project.status === 'Completed' ? '#4ade80' : 'var(--text-muted)',
+                color:
+                  project.status === 'Completed'
+                    ? '#4ade80'
+                    : project.status === 'In Progress'
+                      ? '#fbbf24'
+                      : project.status === 'Planning'
+                        ? '#60a5fa'
+                        : 'var(--text-muted)',
                 fontWeight: 500,
               }}
             >
