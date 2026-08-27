@@ -495,7 +495,7 @@ export const PROJECTS: Project[] = [
     shortDescription: 'A collaborative web application for managing, organizing, and monitoring personal expenses.',
     description: 'A group-developed expense management application designed to help users record, categorize, and monitor their daily spending. The project provided practical experience in collaborative software development, task distribution, Git and GitHub workflows, code integration, and building a complete web application as a team.',
     category: 'Web Application',
-    status: 'Completed',
+    status: 'In Progress',
     role: 'Full Stack Developer',
     duration: '2 months',
     technologies: ['JavaScript', 'Node.js', 'HTML5', 'CSS3'],
