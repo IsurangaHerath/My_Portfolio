@@ -488,4 +488,61 @@ export const PROJECTS: Project[] = [
     ],
     architecture: 'Flask application with Jinja2 templating and RESTful API endpoints. MySQL handles vote storage with transaction-level locking. Session-based authentication ensures one vote per verified user.',
   },
+
+  {
+    id: 'expense-tracker',
+    title: 'Expense Tracker (Group Project)',
+    shortDescription: 'A collaborative web application for managing, organizing, and monitoring personal expenses.',
+    description: 'A group-developed expense management application designed to help users record, categorize, and monitor their daily spending. The project provided practical experience in collaborative software development, task distribution, Git and GitHub workflows, code integration, and building a complete web application as a team.',
+    category: 'Web Application',
+    status: 'Completed',
+    role: 'Full Stack Developer',
+    duration: '2 months',
+    technologies: ['JavaScript', 'Node.js', 'HTML5', 'CSS3'],
+    github: 'https://github.com/IsurangaHerath/Expense_Tracker',
+    image: '/images/projects/expense-tracker.jpg',
+    images: ['/images/projects/expense-tracker.jpg'],
+    liveUrl: '#',
+
+    features: [
+      'Add and manage daily expenses',
+      'Categorize and organize transactions',
+      'Track personal spending',
+      'View expense summaries',
+      'User-friendly expense management interface',
+    ],
+
+    challenges: [
+      'Coordinating development tasks among team members',
+      'Integrating different parts of the application developed by team members',
+      'Maintaining consistent coding practices across the project',
+      'Managing changes and resolving merge conflicts using Git and GitHub',
+    ],
+
+    solutions: [
+      'Divided the project into clearly defined tasks and responsibilities',
+      'Used Git branches and GitHub for parallel development',
+      'Used pull requests and code reviews to integrate team members’ work',
+      'Communicated regularly to coordinate development and resolve integration issues',
+    ],
+
+    lessonsLearned: [
+      'Gained practical experience working as part of a software development team',
+      'Learned effective Git and GitHub collaboration workflows',
+      'Improved communication and task coordination skills',
+      'Gained experience resolving merge conflicts and integrating code',
+      'Improved understanding of collaborative software development practices',
+      'Learned how to divide a real-world project into manageable tasks',
+    ],
+
+    futureImprovements: [
+      'Add user authentication and personalized accounts',
+      'Add interactive expense charts and analytics',
+      'Implement monthly and yearly financial reports',
+      'Add budget planning and spending-limit notifications',
+      'Add expense report export functionality',
+    ],
+
+    architecture: 'A collaborative web-based expense management application developed using a modular structure. Team members worked on separate features using Git branches and GitHub, with changes integrated through a shared repository and collaborative development workflow.'
+  }
 ];
