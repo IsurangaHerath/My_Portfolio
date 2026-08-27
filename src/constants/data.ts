@@ -169,6 +169,7 @@ export interface Certificate {
   description: string;
   skills: string[];
   category: string;
+  status: string;
   image?: string;
 }
 
@@ -184,6 +185,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Introduces core programming principles, logic building, and standard Python syntax.',
     skills: ['Python (Programming Language)', 'Functional Programming', 'Problem Solving', 'Algorithms'],
     category: 'Programming',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/python_for_beginners.PNG`,
   },
   {
@@ -197,6 +199,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Self-paced online course that teaches you how to build computer programs that learn from data to make predictions and automated decisions—without needing a background in complex math.',
     skills: ['Machine Learning', 'Data Classification', 'Cluster', 'Model Evaluatio'],
     category: 'Machine Learning',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/ml_beginner.PNG`,
   },
   {
@@ -210,6 +213,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Moves beyond basic scripts into real-world software development, object-oriented design, and external data handling.',
     skills: ['Procedural Programming', 'OOP', 'Data Structures', 'Data Manipulation'],
     category: 'Programming',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/python_programming.PNG`,
   },
   {
@@ -223,6 +227,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Gained foundational knowledge of Agentic AI, including AI agents, autonomous decision-making, reasoning, planning, large language models (LLMs), and AI-driven workflows for solving complex tasks efficiently.',
     skills: ['Agentic AI Fundamentals', 'Large Language Models (LLMs)', 'Autonomous AI Systems', 'Human-AI Collaboration'],
     category: 'Artificial Intelligence',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/Understanding_agentic_aI.PNG`,
   },
   {
@@ -236,6 +241,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'This course has provided me with a solid understanding of computer hardware, including the basic principles of computer hardware and the basic principles of computer hardware.',
     skills: ['Computer parts', 'Hardware Assembling', 'Troubleshooting', 'Software installation', 'System Installation'],
     category: 'Hardware',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/hardware.PNG`,
   },
   {
@@ -249,6 +255,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Gained an understanding of how AI is evolving from copilots to autonomous agentic systems, with a focus on AI automation, intelligent workflows, decision-making, and business value creation through Agentic AI.',
     skills: ['Agentic AI Fundamentals', 'Large Language Models (LLMs)', 'AI-Driven Decision Making', 'Workflow Automation'],
     category: 'Artificial Intelligence',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/Closing_the_AI_Value_Gap_from_Copilots_to_Agentic_Automation.PNG`,
   },
   {
@@ -262,6 +269,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'The curriculum is organized into step-by-step modules spanning core fundamentals to advanced server communication and modern standards',
     skills: ['Document Object Model (DOM)', 'Asynchronous Data Retrieval', 'Storage Management', 'User Interaction'],
     category: 'Web Development',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/java_script.PNG`,
   },
   {
@@ -275,6 +283,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the Introduction to SQL certification from SoloLearn, gaining foundational knowledge of relational databases, SQL queries, and database management. Developed skills in writing SQL statements, retrieving and manipulating data, working with tables, filtering records, and understanding database structures. This certification strengthened my ability to manage and analyze data effectively for software development and data-driven applications.',
     skills: ['SQL', 'MySQL', 'Relational Databases', 'Database Management System (DBMS)', 'Database Management System (DBMS)'],
     category: 'Database',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/introduction_sql.PNG`,
   },
   {
@@ -288,6 +297,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the SQL Intermediate certification from SoloLearn, developing intermediate-level skills in database querying, data manipulation, and relational database management. Learned advanced SQL concepts including complex queries, joins, filtering, sorting, aggregation, and efficient data retrieval techniques. This certification strengthened my ability to work with structured data and build data-driven applications.',
     skills: ['SQL', 'Database Design', 'MySQL', 'Query Optimization', 'Stored Procedures'],
     category: 'Database',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/sql_intermediate.PNG`,
   },
   {
@@ -301,6 +311,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the GIT, GitLab, and GitHub Fundamentals for Software Developers certification from Udemy, gaining practical knowledge of version control systems and collaborative software development workflows. Learned Git commands, repository management, branching, merging, version tracking, and using GitHub/GitLab for project collaboration.',
     skills: ['GIT', 'GitHub', 'Gitlab', 'Version Control', 'Source Code Management'],
     category: 'Version Control',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/version_control.PNG`,
   },
   {
@@ -314,6 +325,7 @@ export const CERTIFICATES: Certificate[] = [
     description: 'Completed the Prompt Engineering Application certification from Simplilearn, gaining practical knowledge of Generative AI, Large Language Models (LLMs), and effective prompt design techniques. Learned how to create, optimize, and evaluate prompts to improve AI-generated responses and build AI-powered solutions.',
     skills: ['Prompt Engineering', 'Generative AI', 'Large Language Models (LLM)', 'Artificial Intelligence (AI)', 'NLP'],
     category: 'Prompt Engineering',
+    status: 'Completed',
     image: `${import.meta.env.BASE_URL}images/certifications/prompt_engineering.PNG`,
   },
 ];

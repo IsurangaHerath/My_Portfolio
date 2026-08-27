@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Download, Calendar, Award, ChevronRight } from 'lucide-react';
+import { ExternalLink, Download, Calendar, Award, ChevronRight, CheckCircle } from 'lucide-react';
 import { Modal } from './ui/Modal';
 import type { Certificate } from '../constants/data';
 
@@ -262,6 +262,21 @@ export function CertificateCard({ cert }: CertificateCardProps) {
             <span className="badge-primary">{cert.category}</span>
             <span className="badge">{cert.completionDate}</span>
           </div>
+
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.25rem',
+              fontSize: '0.6875rem',
+              color: cert.status === 'Completed' ? '#4ade80' : 'var(--text-muted)',
+              fontWeight: 500,
+              marginBottom: '0.5rem',
+            }}
+          >
+            <CheckCircle size={11} />
+            {cert.status}
+          </span>
 
           <h3 className="heading-card" style={{ marginBottom: '0.375rem' }}>
             {cert.title}
