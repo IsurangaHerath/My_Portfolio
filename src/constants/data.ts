@@ -450,7 +450,7 @@ export const PROJECTS: Project[] = [
     shortDescription: 'Digital platform for conducting secure online elections and voting',
     description: 'A secure web-based voting platform designed to facilitate transparent and tamper-resistant online elections. Built with Python Flask and MySQL, it ensures vote integrity through secure authentication and prevents double voting.',
     category: 'Web Application',
-    status: 'Completed',
+    status: 'In Progress',
     role: 'Full Stack Developer',
     duration: '2 months',
     technologies: ['Python', 'Flask', 'MySQL', 'HTML5', 'CSS3', 'JavaScript'],
