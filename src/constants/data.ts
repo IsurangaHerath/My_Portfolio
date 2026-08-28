@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
   phone: '+94 76 110 0953',
   location: 'Nattandiya, Puttalam, Sri Lanka',
   github: 'https://github.com/IsurangaHerath',
-  linkedin: 'https://www.linkedin.com/in/isuranga-herath-1765b72b9',
+  linkedin: 'http://www.linkedin.com/in/isurangaherath',
   profileImage: `${import.meta.env.BASE_URL}profile.jpg`,
   cvUrl: `${import.meta.env.BASE_URL}Isuranga CV.pdf`,
   bio: [
