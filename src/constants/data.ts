@@ -29,8 +29,8 @@ export const TYPING_ROLES = [
 ];
 
 export const STATS = [
-  { label: 'Projects Built', value: '3+' },
-  { label: 'Certifications', value: '5+' },
+  { label: 'Projects Built', value: '4+' },
+  { label: 'Certifications', value: '15+' },
   { label: 'Technologies', value: '15+' },
   { label: 'Years Learning', value: '3+' },
 ];
