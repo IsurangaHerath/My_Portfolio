@@ -85,7 +85,7 @@ export function Navigation() {
               textAlign: 'center'
             }}
           >
-            Isuranga <br /> Herath<span style={{ color: 'var(--text-muted)' }}>.</span>
+            Isuranga <br /> Herath<span style={{ color: 'var(--text-muted)' }}></span>
           </a>
 
           {/* Spacer pushes everything else to the right */}

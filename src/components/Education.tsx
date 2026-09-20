@@ -233,7 +233,7 @@ export function Education() {
                               cert.image ? (
                                 <button
                                   key={cert.title}
-                                  onClick={() => setViewImage(cert.image)}
+                                  onClick={() => setViewImage(cert.image ?? null)}
                                   style={{
                                     display: 'flex',
                                     alignItems: 'center',
