@@ -96,9 +96,13 @@ export function Contact() {
                         <span className="label-xs" style={{ display: 'block', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>
                           Email
                         </span>
-                        <span className="body-base" style={{ color: 'var(--text-primary)' }}>
+                        <a
+                          href={`mailto:${PERSONAL_INFO.email}`}
+                          className="body-base"
+                          style={{ color: 'var(--text-primary)', textDecoration: 'none' }}
+                        >
                           {PERSONAL_INFO.email}
-                        </span>
+                        </a>
                       </div>
                     </div>
 
