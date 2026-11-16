@@ -10,6 +10,7 @@ type Msg = { role: 'user' | 'bot'; text: string; images?: string[] };
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
@@ -98,14 +99,32 @@ export function ChatWidget() {
         <div
           style={{
             position: 'fixed', right: 20, bottom: 90, zIndex: 1000,
-            width: 340, maxWidth: 'calc(100vw - 40px)', height: 460,
+            width: expanded ? '46vw' : 340, maxWidth: 'calc(100vw - 40px)', height: expanded ? '75vh' : 460,
             display: 'flex', flexDirection: 'column', borderRadius: 14,
             background: '#FFFFFF', color: '#000000', boxShadow: '0 8px 30px rgba(0,0,0,.25)',
             overflow: 'hidden', fontFamily: 'system-ui, sans-serif', fontSize: 14,
           }}
         >
-          <div style={{ padding: '12px 14px', background: '#FFFFFF', color: '#000000', borderBottom: '3px solid #000000', fontWeight: 800, fontSize: 16 }}>
-            Ask about me
+          <div style={{ padding: '12px 14px', background: '#FFFFFF', color: '#000000', borderBottom: '3px solid #000000', fontWeight: 800, fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span>Ask about me</span>
+            <span style={{ display: 'flex', gap: 6 }}>
+              <button
+                onClick={() => setExpanded((e) => !e)}
+                aria-label={expanded ? 'Restore chat size' : 'Maximize chat'}
+                title={expanded ? 'Restore' : 'Maximize'}
+                style={{ width: 28, height: 28, borderRadius: 8, border: '1px solid #000000', background: '#FFFFFF', color: '#000000', cursor: 'pointer', fontSize: 16, lineHeight: 1, padding: 0 }}
+              >
+                {expanded ? '⤡' : '⤢'}
+              </button>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close chat"
+                title="Close"
+                style={{ width: 28, height: 28, borderRadius: 8, border: '1px solid #000000', background: '#FFFFFF', color: '#000000', cursor: 'pointer', fontSize: 18, lineHeight: 1, padding: 0 }}
+              >
+                ×
+              </button>
+            </span>
           </div>
 
           <div ref={listRef} style={{ flex: 1, overflowY: 'auto', padding: 12, display: 'flex', flexDirection: 'column', gap: 8, background: '#FFFFFF' }}>
