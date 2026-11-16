@@ -63,7 +63,6 @@ export function About() {
             <StaggerItem key={stat.label}>
               <motion.div
                 className="stat-item"
-                whileHover={{ backgroundColor: 'var(--bg-hover)' }}
                 transition={{ duration: 0.2 }}
                 style={{ cursor: 'default' }}
               >
@@ -91,10 +90,10 @@ export function About() {
                   }}>
                     {stat.value}
                   </div>
-                  <div style={{
+                  <div className="stat-label" style={{
                     fontSize: '0.875rem',
-                    color: 'var(--text-muted)',
                     marginTop: '0.375rem',
+                    transition: 'color 200ms',
                   }}>
                     {stat.label}
                   </div>
@@ -118,8 +117,15 @@ export function About() {
             background: var(--bg-secondary);
             transition: background-color 200ms;
           }
+          .stats-grid .stat-label {
+            color: var(--text-muted);
+            transition: color 200ms;
+          }
           .stats-grid .stat-item:hover {
-            background-color: var(--bg-hover);
+            background: var(--bg-hover);
+          }
+          .stats-grid .stat-item:hover .stat-label {
+            color: var(--text-secondary);
           }
           @media (min-width: 640px) {
             .stats-grid {
