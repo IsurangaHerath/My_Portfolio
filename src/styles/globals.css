@@ -3,15 +3,15 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* === DARKER CREAM PALETTE === */
-  --bg-primary: #E9DFCD;
-  --bg-secondary: #DDD2BE;
-  --bg-card: #F2EBDD;
-  --bg-hover: #D5C8B0;
-  --border: #BCAE93;
+  /* === CREAM PALETTE (vanilla linen) === */
+  --bg-primary: #D9C7A7;
+  --bg-secondary: #B79B7A;
+  --bg-card: #FFF2D8;
+  --bg-hover: #F2E3C6;
+  --border: #6B5646;
   --text-primary: #0A0A0A;
-  --text-secondary: #3B342A;
-  --text-muted: #5E5444;
+  --text-secondary: #3B2A20;
+  --text-muted: #6B5646;
   --accent: #0A0A0A;
 
   /* === SHADCN COMPATIBLE VARS === */

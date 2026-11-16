@@ -89,6 +89,7 @@
 /* Cards */
 .card-dark {
   background-color: var(--bg-card);
+  color: #0A0A0A;
   border: 1px solid var(--border);
   border-radius: 1rem;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -103,6 +104,7 @@
 }
 
 .card-glass {
+  color: #0A0A0A;
   background: color-mix(in srgb, var(--bg-card) 60%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

@@ -59,6 +59,11 @@ export function ChatWidget() {
 
   return (
     <>
+      <style>{`
+        :root { --chat-dark: #DDD2BE; --chat-on-dark: #000000; }
+        .dark { --chat-dark: #262626; --chat-on-dark: #FFFFFF; }
+        .chat-input::placeholder { color: var(--chat-on-dark); opacity: 1; }
+      `}</style>
       <div
         style={{
           position: 'fixed', right: 20, bottom: 20, zIndex: 1000,
@@ -95,33 +100,33 @@ export function ChatWidget() {
             position: 'fixed', right: 20, bottom: 90, zIndex: 1000,
             width: 340, maxWidth: 'calc(100vw - 40px)', height: 460,
             display: 'flex', flexDirection: 'column', borderRadius: 14,
-            background: '#fff', color: '#111', boxShadow: '0 8px 30px rgba(0,0,0,.25)',
+            background: '#FFFFFF', color: '#000000', boxShadow: '0 8px 30px rgba(0,0,0,.25)',
             overflow: 'hidden', fontFamily: 'system-ui, sans-serif', fontSize: 14,
           }}
         >
-          <div style={{ padding: '12px 14px', background: '#2563eb', color: '#fff', fontWeight: 600 }}>
+          <div style={{ padding: '12px 14px', background: '#FFFFFF', color: '#000000', borderBottom: '3px solid #000000', fontWeight: 800, fontSize: 16 }}>
             Ask about me
           </div>
 
-          <div ref={listRef} style={{ flex: 1, overflowY: 'auto', padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div ref={listRef} style={{ flex: 1, overflowY: 'auto', padding: 12, display: 'flex', flexDirection: 'column', gap: 8, background: '#FFFFFF' }}>
             {messages.map((m, i) => (
               <div key={i} style={{ alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start', maxWidth: '85%' }}>
                 <div
                   style={{
                     padding: '8px 12px', borderRadius: 12, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                    background: m.role === 'user' ? '#2563eb' : '#e5e7eb',
-                    color: m.role === 'user' ? '#fff' : '#111',
+                    background: 'var(--chat-dark)',
+                    color: 'var(--chat-on-dark)',
                   }}
                 >
                   {m.text}
                 </div>
                 {m.images?.map((src) => (
                   <img key={src} src={src} alt="Certificate" loading="lazy"
-                    style={{ width: '100%', marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }} />
+                    style={{ width: '100%', marginTop: 6, borderRadius: 8, border: '1px solid var(--border)' }} />
                 ))}
               </div>
             ))}
-            {busy && <div style={{ color: '#6b7280' }}>Typing...</div>}
+            {busy && <div style={{ color: 'var(--text-muted)' }}>Typing...</div>}
           </div>
 
           {messages.length === 1 && !busy && (
@@ -131,7 +136,7 @@ export function ChatWidget() {
                   key={q}
                   type="button"
                   onClick={() => sendText(q)}
-                  style={{ padding: '5px 10px', borderRadius: 999, border: '1px solid #bfdbfe', background: '#eff6ff', color: '#1d4ed8', fontSize: 12, cursor: 'pointer' }}
+                  style={{ padding: '5px 10px', borderRadius: 999, border: '1px solid #D1D5DB', background: '#FFFFFF', color: '#000000', fontSize: 12, cursor: 'pointer' }}
                 >
                   {q}
                 </button>
@@ -139,19 +144,20 @@ export function ChatWidget() {
             </div>
           )}
 
-          <form onSubmit={send} style={{ display: 'flex', gap: 8, padding: 10, borderTop: '1px solid #e5e7eb' }}>
+          <form onSubmit={send} style={{ display: 'flex', gap: 8, padding: 10, borderTop: '1px solid var(--border)' }}>
             <input
               ref={inputRef}
+              className="chat-input"
               aria-label="Chat message"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a question..."
-              style={{ flex: 1, padding: '8px 10px', borderRadius: 8, border: '1px solid #d1d5db', fontSize: 14 }}
+              style={{ flex: 1, padding: '8px 10px', borderRadius: 8, border: '1px solid var(--chat-dark)', background: 'var(--chat-dark)', color: 'var(--chat-on-dark)', fontSize: 14 }}
             />
             <button
               type="submit"
               disabled={busy}
-              style={{ padding: '8px 14px', borderRadius: 8, border: 'none', background: '#2563eb', color: '#fff', cursor: 'pointer' }}
+              style={{ padding: '8px 14px', borderRadius: 8, border: 'none', background: 'var(--chat-dark)', color: 'var(--chat-on-dark)', cursor: 'pointer' }}
             >
               Send
             </button>
