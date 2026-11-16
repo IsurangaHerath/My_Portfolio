@@ -59,20 +59,35 @@ export function ChatWidget() {
 
   return (
     <>
-      <button
-        onClick={() => setOpen((o) => !o)}
-        aria-label={open ? 'Close chat' : 'Open chat'}
-        aria-expanded={open}
-        title="Chat with me"
+      <div
         style={{
           position: 'fixed', right: 20, bottom: 20, zIndex: 1000,
-          width: 56, height: 56, borderRadius: '50%', border: 'none',
-          background: '#2563eb', color: '#fff', fontSize: 24, cursor: 'pointer',
-          boxShadow: '0 4px 14px rgba(0,0,0,.25)',
+          display: 'flex', alignItems: 'center', gap: 0,
+          filter: 'drop-shadow(0 4px 14px rgba(0,0,0,.25))',
         }}
       >
-        {open ? '×' : '💬'}
-      </button>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? 'Close chat' : 'Open chat'}
+          aria-expanded={open}
+          title="Chat with me"
+          style={{
+            width: 56, height: 56, borderRadius: '50%', border: 'none',
+            background: '#fff', color: '#000', fontSize: 24, cursor: 'pointer',
+            margin: 0, padding: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          {open ? (
+            '×'
+          ) : (
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z" />
+            </svg>
+          )}
+        </button>
+      </div>
 
       {open && (
         <div
