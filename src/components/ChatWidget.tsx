@@ -7,12 +7,14 @@ const CHAT_API: string =
 const QUICK_QUESTIONS = ['What are your skills?', 'Show your projects', 'Certifications?', 'How can I contact you?'];
 
 type Msg = { role: 'user' | 'bot'; text: string; images?: string[] };
+type Option = { label: string; message: string };
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [options, setOptions] = useState<Option[]>([]);
   const [messages, setMessages] = useState<Msg[]>([
     { role: 'bot', text: "Hi! Ask me about Isuranga's skills, projects, education or certifications." },
   ]);
@@ -35,6 +37,7 @@ export function ChatWidget() {
     if (!text || busy) return;
     setInput('');
     setMessages((m) => [...m, { role: 'user', text }]);
+    setOptions([]);
     setBusy(true);
     try {
       const res = await fetch(`${CHAT_API}/chat`, {
@@ -46,6 +49,7 @@ export function ChatWidget() {
       if (!res.ok) throw new Error(data.error || 'Request failed');
       chatState.current = data.state ?? {};
       setMessages((m) => [...m, { role: 'bot', text: data.reply, images: data.images ?? [] }]);
+      setOptions(data.options ?? []);
     } catch {
       setMessages((m) => [...m, { role: 'bot', text: 'Sorry, the chat service is not reachable right now.' }]);
     } finally {
@@ -158,6 +162,21 @@ export function ChatWidget() {
                   style={{ padding: '5px 10px', borderRadius: 999, border: '1px solid #D1D5DB', background: '#FFFFFF', color: '#000000', fontSize: 12, cursor: 'pointer' }}
                 >
                   {q}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {options.length > 0 && !busy && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, padding: '0 12px 8px' }}>
+              {options.map((o) => (
+                <button
+                  key={o.label}
+                  type="button"
+                  onClick={() => sendText(o.message)}
+                  style={{ padding: '5px 10px', borderRadius: 999, border: '1px solid #D1D5DB', background: '#FFFFFF', color: '#000000', fontSize: 12, cursor: 'pointer' }}
+                >
+                  {o.label}
                 </button>
               ))}
             </div>
